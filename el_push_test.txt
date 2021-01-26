@@ -3,6 +3,9 @@ This is a test from Timmy.
 Test again.
 Poopy Poopy ha ha funny funny
 123
+<<<<<<< HEAD
 Pee Pee
 This is a test in the office
 this is a test
+=======
+>>>>>>> 5f104dd85ece1159a36e39b1a08e38e91556a87e
