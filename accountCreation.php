@@ -2,9 +2,10 @@
 <html>
 	<head>
 		<title>Account Creation</title>
+		<script type="text/javascript" src = "myFunctions.js"></script>
 	</head>
 	<body>
-		<form class = "account-creation-form" action = "account-creation-functions.php" method="get">
+		<!--<form class = "account-creation-form" action = "account-creation-functions.php" method="get">!-->
 			<ul>
 				<li>
 					<label for="email-input">Email</label>
@@ -12,7 +13,7 @@
 				</li>
 
 				<li>					
-					<label for="password-input-input">Password</label>
+					<label for="password-input">Password</label>
 					<input type="password" id="password-input" name = "password" minlength="8" required
 					title = "Enter a password of at least 8 length">
 				</li>
@@ -28,9 +29,9 @@
 				</li>
 
 				<li>
-					<input type="submit" id="submit-button" value="Create Account">
+					<input type="submit" id="submit-button" value="Create Account" onclick="getAccountCreationInfo()">
 				</li>
 			</ul>
-		</form>
+		<h1 id = "test"></h1>
 	</body>
 </html>
