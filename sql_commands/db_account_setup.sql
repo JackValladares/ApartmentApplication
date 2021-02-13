@@ -3,7 +3,7 @@
 --
 
 -- Create the database if it doesn't already exist;
-CREATE DATABASE IF NOT EXISTS AppartmentApplication;
+CREATE DATABASE IF NOT EXISTS ApartmentApplication;
 
 -- Create the Account table if it doesn't already exist;
 USE accounts;
