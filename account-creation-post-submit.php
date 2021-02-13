@@ -19,8 +19,7 @@
 		  $user_name = $f_name ." ". $l_name;
 
 		  insertAccount($conn,$email,$user_name,$password);
-
-		echo "Email: " . $_GET["email"];
+		  
 		?>
 	</body>
 </html>

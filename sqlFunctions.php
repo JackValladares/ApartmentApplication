@@ -1,10 +1,14 @@
+<!--TODO:
+    -Figure out how $results data is stored and if it can be compared to string password.
+    !-->
+
 <?php
 
 	function connectDB(){
 		$hn = "localhost";
-		$un="phpAdmin";
-		$pw="ezWguo1EZiF6sxgm";
-		$db="ApartmentApplication";
+        $un = "root";
+        $pw = "";
+		$db= "ApartmentApplication";
 
 		$conn = new mysqli($hn,$un,$pw,$db);
 		if($conn->connect_error) die("fatal error on connecting to db");
@@ -22,16 +26,18 @@
           } 
     }
 
+    //verify that given password matches account password
     function checkAccount($connection, $email, $passwrd){
-        $query = "SELECT passwd FROM account
-        WHERE user_name = <user_name>;
-        
-        -- Attempt to fetch the corresponding password for a given email
+        $query = "
         SELECT passwd FROM account
-        WHERE email= <email>;";
+        WHERE email= '$email';";
 
         $results = $connection->query($query);
-        return $results;
+
+        if($results == $passwrd)
+            return 1;
+        else
+            return 0;
     }
 
 ?>
