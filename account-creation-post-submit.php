@@ -16,7 +16,7 @@
 		  $password = $_GET["password"];
 		  $f_name = $_GET["f-name"];
 		  $l_name = $_GET["l-name"];
-		  $user_name = $f_name . $l_name;
+		  $user_name = $f_name ." ". $l_name;
 
 		  insertAccount($conn,$email,$user_name,$password);
 

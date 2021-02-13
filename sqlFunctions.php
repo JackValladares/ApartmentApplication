@@ -2,9 +2,9 @@
 
 	function connectDB(){
 		$hn = "localhost";
-		$un="phpadmin";
-		$pw="";
-		$db="appartmentApplication";
+		$un="phpAdmin";
+		$pw="ezWguo1EZiF6sxgm";
+		$db="ApartmentApplication";
 
 		$conn = new mysqli($hn,$un,$pw,$db);
 		if($conn->connect_error) die("fatal error on connecting to db");
@@ -14,7 +14,7 @@
 
     function insertAccount($connection, $email, $user_name, $passwrd){
         $query = "INSERT INTO account (email, user_name, passwd)
-        VALUES (<email>, <user_name>, <passwd>);";
+        VALUES ('$email', '$user_name', '$passwrd');";
         $results = $connection->query($query);
         if(!$results){
             echo "Query failed";
