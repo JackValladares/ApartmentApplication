@@ -5,7 +5,7 @@
 		<script type="text/javascript" src = "myFunctions.js"></script>
 	</head>
 	<body>
-		<!--<form class = "account-creation-form" action = "account-creation-functions.php" method="get">!-->
+		<<form class = "account-creation-form" action = "account-creation-functions.php" method="get">!-->
 			<ul>
 				<li>
 					<label for="email-input">Email</label>
@@ -32,6 +32,7 @@
 					<input type="submit" id="submit-button" value="Create Account" onclick="getAccountCreationInfo()">
 				</li>
 			</ul>
-		<h1 id = "test"></h1>
+		</form>
+			<h1 id = "test"></h1>
 	</body>
 </html>
