@@ -8,7 +8,7 @@ CREATE DATABASE IF NOT EXISTS ApartmentApplication;
 -- Create the Account table if it doesn't already exist;
 USE accounts;
 
-CREATE TABLE IF NOT EXISTS account (
+CREATE TABLE IF NOT EXISTS Account (
     user_id         INT AUTO_INCREMENT PRIMARY KEY,
     email           VARCHAR(512),
     user_name       VARCHAR(512),
@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS account (
 );
 
 -- Insert some test data
-INSERT INTO account(user_id, email, user_name, passwd) VALUES
+INSERT INTO Account(user_id, email, user_name, passwd) VALUES
                     (1,'coolyguy123@gmail.com', 'Cool Guy', 'password123'),
                     (2, 'jacknvall@gmail.com', 'Jack Not Valladares', 'NotJacksPassword'),
                     (3, 'lameemail@lameemail.com', 'Harris Collier', 'drowssap');
