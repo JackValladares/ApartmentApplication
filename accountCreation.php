@@ -2,7 +2,6 @@
 <html>
 	<head>
 		<title>Account Creation</title>
-		<script type="text/javascript" src = "myFunctions.js"></script>
 	</head>
 	<body>
 		<<form class = "account-creation-form" action = "account-creation-functions.php" method="get">!-->
@@ -29,7 +28,7 @@
 				</li>
 
 				<li>
-					<input type="submit" id="submit-button" value="Create Account" onclick="getAccountCreationInfo()">
+					<input type="submit" id="submit-button" value="Create Account">
 				</li>
 			</ul>
 		</form>
