@@ -12,7 +12,8 @@ CREATE TABLE IF NOT EXISTS Account (
     user_id         INT AUTO_INCREMENT PRIMARY KEY,
     email           VARCHAR(512),
     user_name       VARCHAR(512),
-    passwd        VARCHAR(512)
+    passwd        VARCHAR(512),
+    UNIQUE KEY    unique_email (email)
 );
 
 -- Insert some test data
