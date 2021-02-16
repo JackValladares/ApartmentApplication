@@ -7,6 +7,9 @@
 import os
 import sys
 
+SQL_SCRIPTS_DIR =   'sql_commands' 
+SETUP_SCRIPT =      'db_account_setup.sql'
+TEARDOWN_SCRIPT =   'db_account_teardown.sql'
 
 def call_script(script_dir, script_name):
     script_path = os.path.join(script_dir, script_name)
@@ -17,9 +20,6 @@ def print_usage():
         sys.exit(1)
 
 def main():
-    SQL_SCRIPTS_DIR =   'sql_commands' 
-    SETUP_SCRIPT =      'db_account_setup.sql'
-    TEARDOWN_SCRIPT =   'db_account_teardown.sql'
 
     if len(sys.argv) != 2:
         print_usage()
