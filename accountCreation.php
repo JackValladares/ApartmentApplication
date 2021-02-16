@@ -4,7 +4,7 @@
 		<title>Account Creation</title>
 	</head>
 	<body>
-		<form class = "account-creation-form" action = "account-creation-functions.php" method="get">
+		<form class = "account-creation-form" action = "account-creation-post-submit.php" method="get">
 			<ul>
 				<li>
 					<label for="email-input">Email</label>
@@ -12,7 +12,7 @@
 				</li>
 
 				<li>					
-					<label for="password-input-input">Password</label>
+					<label for="password-input">Password</label>
 					<input type="password" id="password-input" name = "password" minlength="8" required
 					title = "Enter a password of at least 8 length">
 				</li>
@@ -32,5 +32,6 @@
 				</li>
 			</ul>
 		</form>
+			<h1 id = "test"></h1>
 	</body>
 </html>
