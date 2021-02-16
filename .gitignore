@@ -3,5 +3,4 @@
 
 # Python generated files
 __pycache__/
-tests/pycache/
-scripts/pycache/
+*/__pycache__/
