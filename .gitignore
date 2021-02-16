@@ -1,1 +1,7 @@
+# VS Code generated files
 .vscode/
+
+# Python generated files
+/__pycache__/
+tests/__pycache__/
+scripts/__pycache__/
