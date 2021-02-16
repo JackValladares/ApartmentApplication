@@ -6,7 +6,7 @@
 CREATE DATABASE IF NOT EXISTS ApartmentApplication;
 
 -- Create the Account table if it doesn't already exist;
-USE accounts;
+USE ApartmentApplication;
 
 CREATE TABLE IF NOT EXISTS Account (
     user_id         INT AUTO_INCREMENT PRIMARY KEY,
