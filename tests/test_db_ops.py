@@ -1,7 +1,7 @@
 import MySQLdb
 import unittest
 
-import db_ops as dops
+from scripts import db_ops as dops
 
 class TestDBOps(unittest.TestCase):
 
