@@ -6,7 +6,7 @@
 
 	function connectDB()
     {
-		$hn = "localhost";
+	    $hn = "localhost";
         $un = "root";
         $pw = "";
 		$db= "ApartmentApplication";
