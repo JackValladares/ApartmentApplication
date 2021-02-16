@@ -18,7 +18,12 @@
 		  $l_name = $_GET["l-name"];
 		  $user_name = $f_name ." ". $l_name;
 
-		  insertAccount($conn,$email,$user_name,$password);
+		try{
+			insertAccount($conn,$email,$user_name,$password);
+		}
+		catch(Exception $e){
+			echo "Following error occured: $e";
+		}
 		  
 		?>
 	</body>
