@@ -11,16 +11,16 @@ class TestDBOps(unittest.TestCase):
                      passwd="",                   # password
                      db="ApartmentApplication")   # name of the database
 
-        # Create a Cursor object to execute queries.
+        # Create a Cursor object to execute queries
         cur = db.cursor()
 
         # Call the setup script
         dops.call_script(dops.SQL_SCRIPTS_DIR, dops.SETUP_SCRIPT)
 
-        # Select data from table using SQL query.
+        # Select data from table using SQL query
         cur.execute("SELECT * FROM Account")
 
-        # print the first and second columns      
+        # Above query should return results
         self.assertTrue(len(cur.fetchall()) != 0)
 
     def test_teardown(self):
