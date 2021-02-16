@@ -35,6 +35,10 @@
 			</ul>
 			<?php 
 			
+				//if the $_SESSION['register_success] variable exists then that means that registration failed
+				//we can update this to get the specific part that didn't work (email or pass or login) by creating
+				//more specific $_SESSION variables 
+				//POGGERS
 				if(isset($_SESSION['register_success'])){
 					echo "<h1>ERROR</h1>";
 					$error = $_SESSION['registration_error'];
