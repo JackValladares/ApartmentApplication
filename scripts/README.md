@@ -2,8 +2,6 @@
 
 ## Description
 
----
-
 The script named *db_ops.py* handles the database installation/uninstallation procedure. 
 <br>More specifically, the script performs the following actions:</br>
 
@@ -18,8 +16,6 @@ The script named *db_ops.py* handles the database installation/uninstallation pr
 
 
 ## Usage
-
----
 
 To perform the environment installation procedure, simply execute the following command in your terminal:
 
