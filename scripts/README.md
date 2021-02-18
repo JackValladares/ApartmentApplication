@@ -14,7 +14,7 @@ The script named *db_ops.py* handles the database installation/uninstallation pr
 >1. Drops all tables in the ApartmentApplication database
 >2. Does not delete the database itself
 
-
+<br></br>
 ## Usage
 
 To perform the environment installation procedure, simply execute the following command in your terminal:
@@ -24,3 +24,10 @@ To perform the environment installation procedure, simply execute the following 
 Conversely, to wipe the install execute the following command in your terminal:
 
 > python3 db_ops.py teardown
+
+
+<br></br>
+## Requirements
+In order to run the install script, the following must be installed:
+* python3.X
+* mysql
