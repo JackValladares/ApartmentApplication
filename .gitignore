@@ -6,4 +6,4 @@ __pycache__/
 */__pycache__/
 
 #Mac creates this file and we don't need it
-.ds_Store
+.DS_STORE
