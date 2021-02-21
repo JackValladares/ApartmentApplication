@@ -3,16 +3,11 @@
     !-->
 
 <script>
-    function alertBox()
-        {
-            alert("Duplicate Email detected redirecting back to Account Creation");
-        }
-    </script>
-
 <?php
 
-        session_start();
+    session_start();
 
+    //function to connect to a database and return a connection
 	function connectDB(){
 		$hn = "localhost";
         $un = "root";
@@ -25,6 +20,8 @@
 		return $conn;
 	}
 
+    //function used to insert and account into the database - if it failes it redirects to 
+    //the create account page and displays and error.
     function insertAccount($connection, $email, $user_name, $passwrd){
         $query = "INSERT INTO account (email, user_name, passwd)
         VALUES ('$email', '$user_name', '$passwrd');";
@@ -37,6 +34,7 @@
           } 
     }
 
+    //function used to redirect to any page
     function sendToPage($page){
         header("Location: $page");
     }
