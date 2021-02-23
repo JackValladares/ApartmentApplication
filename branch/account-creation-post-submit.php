@@ -20,7 +20,6 @@
 			$user_name = $f_name ." ". $l_name;
 
 			insertAccount($conn,$email,$user_name,$password);
-
 		  
 		?>
 	</body>

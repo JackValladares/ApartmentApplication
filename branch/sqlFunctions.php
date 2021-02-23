@@ -4,11 +4,9 @@
 
 <?php
 
-    session_start();
-
-    //function to connect to a database and return a connection
-	function connectDB(){
-		$hn = "localhost";
+	function connectDB()
+    {
+	    $hn = "localhost";
         $un = "root";
         $pw = "";
 		$db= "ApartmentApplication";
@@ -27,9 +25,6 @@
         if(mysqli_num_rows($result) > 0)
         {
             echo "Email already exists in database";
-            $_SESSION['register_success'] = false;
-            $_SESSION['registration_error'] = "Something went wrong with registration. Make sure you don't already have an account associated with this email.";
-            header("location:accountCreation.php");
             die("email already exists");
             //TODO: Figure out how to send the error message back to the webpage
         }
@@ -42,13 +37,11 @@
             echo "Query failed";
             die("fatal error on sql query");
         } 
-    //function used to redirect to any page
-    function sendToPage($page){
-        header("Location: $page");
     }
 
     //verify that given password matches account password
-    function checkAccount($connection, $email, $passwrd){
+    function checkAccount($connection, $email, $passwrd)
+    {
         $query = "
         SELECT passwd FROM account
         WHERE email= '$email';";
