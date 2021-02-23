@@ -1,0 +1,50 @@
+.header {
+	padding: 15px;
+	background: #381d1d;
+	outline-color: #160c0c;
+	outline-width: 5px;
+	outline-style: outset;
+}
+
+.banner {
+	width: 100%;
+	height: 300px;
+	position: absolute;
+	z-index: -1;
+}
+
+#loginInterface {
+	float: right;
+	outline-color: black;
+	outline-style: outset;
+	background: white;
+	width: 300px;
+	padding: 15px;
+	display: block;
+}
+
+.buttonHolder {
+	position: absolute;
+	right: 100px;
+	top: 125px;
+	width: 200px;
+	height: 50px;
+}
+
+.loginButton {
+	background-color: #cbb26a; 
+	color: white;
+	border: none;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	transition-duration: .4s;
+	width: 200px;;
+}
+
+.loginButton:hover {
+	background-color: white;
+	color: #cbb26a;
+}
