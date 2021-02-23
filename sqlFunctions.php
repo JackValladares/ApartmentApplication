@@ -23,7 +23,7 @@
     {
         //check that email is new to database
         $emailquery = "SELECT * FROM account WHERE email='$email'";
-        $result = $connection->query($query);
+        $result = $connection->query($emailquery);
         if(mysqli_num_rows($result) > 0)
         {
             echo "Email already exists in database";
@@ -45,7 +45,7 @@
     //function used to redirect to any page
     function sendToPage($page){
         header("Location: $page");
-    }
+    }}
 
     //verify that given password matches account password
     function checkAccount($connection, $email, $passwrd){
