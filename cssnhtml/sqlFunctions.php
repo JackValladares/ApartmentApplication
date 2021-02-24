@@ -50,17 +50,22 @@
     }}
 
     //verify that given password matches account password
-    function checkAccount($connection, $email, $passwrd){
-        $query = "
-        SELECT passwd FROM account
-        WHERE email= '$email';";
+    function userLogin($conn, $email, $password){
+        $query = "SELECT * FROM Account WHERE email = \"$email\" AND passwd = \"$password\";";
+        $results = $conn->query($query);
+        if(!$results){
+            echo "user Login failed";
+            die("fatal error on sql query");
+          } 
 
-        $results = $connection->query($query);
+        $rows = $results->num_rows;
+        if($rows==1){
+            header("Location: LoginSuccessPage.php?user=\"$email\"");
+        }
+        else{
 
-        if($results == $passwrd)
-            return 1;
-        else
-            return 0;
+        }
+
     }
 
 ?>
