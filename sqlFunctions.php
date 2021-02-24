@@ -2,6 +2,8 @@
     -Figure out how $results data is stored and if it can be compared to string password.
     !-->
 
+<!--small test change!-->
+
 <?php
 
     session_start();
