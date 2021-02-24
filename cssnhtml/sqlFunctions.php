@@ -63,7 +63,7 @@
             header("Location: LoginSuccessPage.php?user=\"$email\"");
         }
         else{
-
+            header("Location: LoginPage.php?msg=LoginFailed");
         }
 
     }

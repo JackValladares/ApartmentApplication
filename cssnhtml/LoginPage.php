@@ -28,11 +28,18 @@
 	<div class = "buttonHolder">
 		<button class="loginButton" onClick="openLoginPage()"> Log In </button>
 	</div>
-	
+
 	<form action="loginphp.php" method="post">
 		<div class="imgcontainer">
 	</div>
 
+
+	<?php
+	if(isset($_GET['msg'])){
+		echo "Login Failed";
+	}
+
+	?>
 
 
 
