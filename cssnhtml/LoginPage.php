@@ -34,16 +34,16 @@
 	</div>
 
 
-	<?php
-	if(isset($_GET['msg'])){
-		echo "Login Failed";
-	}
-
-	?>
-
 
 
 	<div id="loginInterface">
+
+	<?php
+	if(isset($_GET['msg'])){
+		echo "Login Failed - Try Again <br>";
+	}
+
+	?>
 		<label for="username"><b>Username</b></label>
 		<input type="text" placeholder="Enter Username" name="username" required>
 
