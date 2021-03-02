@@ -65,5 +65,6 @@
     //check to see if email exists
         //if email exists in db
             //update password
+    //if email doesn't exist send back to reset page with message of bad email
 
 ?>
