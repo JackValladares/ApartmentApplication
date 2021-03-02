@@ -62,5 +62,8 @@
     }
 
     function updateAccount($conn, $password, $email){}
+    //check to see if email exists
+        //if email exists in db
+            //update password
 
 ?>
