@@ -61,4 +61,6 @@
             return 0;
     }
 
+    function updateAccount($conn, $password, $email){}
+
 ?>

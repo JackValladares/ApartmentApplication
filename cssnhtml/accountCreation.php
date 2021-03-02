@@ -6,7 +6,7 @@
 		<title>Account Creation</title>
 	</head>
 	<body>
-		<form class = "account-creation-form" action = "account-creation-post-submit.php" method="get">
+		<form class = "account-creation-form" action = "account-creation-post-submit.php" method="POST">
 			<ul>
 				<li>
 					<label for="email-input">Email</label>
