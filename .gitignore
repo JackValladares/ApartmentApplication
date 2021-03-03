@@ -1,9 +1,0 @@
-# VS Code generated files
-.vscode/
-
-# Python generated files
-__pycache__/
-*/__pycache__/
-
-#Mac creates this file and we don't need it
-.DS_STORE

@@ -1,8 +1,0 @@
-Stories to work on
-
-Check for duplicate email upon account creation
--In review right now
-
-Display errors upon entry of a duplicate email
--Find out how to return error message to website
--Create elegant way to display error
