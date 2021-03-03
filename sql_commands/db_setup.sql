@@ -10,17 +10,18 @@ USE ApartmentApplication;
 
 CREATE TABLE IF NOT EXISTS Account (
     user_id         INT AUTO_INCREMENT PRIMARY KEY,
-    email           VARCHAR(512),
-    user_name       VARCHAR(512),
-    passwd        VARCHAR(512),
+    email               VARCHAR(512),
+    user_name           VARCHAR(512),
+    passwd              VARCHAR(512),
+    passwd_reset_key    VARCHAR(8),
     UNIQUE KEY    unique_email (email)
 );
 
 -- Insert some test data
-INSERT INTO Account(user_id, email, user_name, passwd) VALUES
-                    (1,'coolyguy123@gmail.com', 'Cool Guy', 'password123'),
-                    (2, 'jacknvall@gmail.com', 'Jack Not Valladares', 'NotJacksPassword'),
-                    (3, 'lameemail@lameemail.com', 'Harris Collier', 'drowssap');
+INSERT INTO Account(email, user_name, passwd, passwd_reset_key) VALUES
+                    ('coolyguy123@gmail.com', 'Cool Guy', 'password123', NULL),
+                    ('jacknvall@gmail.com', 'Jack Not Valladares', 'NotJacksPassword', NULL),
+                    ('lameemail@lameemail.com', 'Harris Collier', 'drowssap', NULL);
 
 
 -- Create the Listing table if it doesn't already exist
