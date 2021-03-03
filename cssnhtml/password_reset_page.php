@@ -27,9 +27,6 @@
 				$temp = $_GET['email'];
 				echo "<h1>Email $temp not in system</h1>";
 			}
-
-			$temp = $_SESSION['password_reset_key'];
-			echo "key = $temp";
 		?>
 		<form class = "password-reset-form" action = "password-reset-post-submit.php" method="POST">
 			<ul>
