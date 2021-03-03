@@ -71,7 +71,7 @@
         if(mysqli_num_rows($result) != 1)
         {
             //send back to the page harris is making and say that this query failed because this email doesn't exist
-            header("Location: password_reset_page.php?RCE=1&email=$email");
+            header("Location: HARRISREQUESTPAGE?RCE=1&email=$email");
         }
         else{
             $_SESSION['password_reset_key'] = $result;
