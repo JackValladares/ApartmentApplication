@@ -1,12 +1,3 @@
-<?php
-	session_start();
-	if(isset($_GET['key']))
-	{
-		unset($_SESSION['key']);
-		$_SESSION['password_reset_key'] = $_GET['key'];
-	}
-?>
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -26,6 +17,11 @@
 			{
 				$temp = $_GET['email'];
 				echo "<h1>Email $temp not in system</h1>";
+			}
+			if(isset($_GET['RCE']) and isset($_GET['email']))
+			{
+				$temp = $_GET['email'];
+				echo "<h1>Email $temp is not in the system/h1>";
 			}
 		?>
 		<form class = "password-reset-form" action = "password-reset-post-submit.php" method="POST">

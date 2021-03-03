@@ -50,7 +50,7 @@
     function updateAccount($conn, $password, $email){
         $emailquery = "SELECT * FROM account WHERE email='$email'";
         $result = $conn->query($emailquery);
-        if(mysqli_num_rows($result) > 1)
+        if(mysqli_num_rows($result) != 1)
         {
             header("Location: password_reset_page.php?EE=1&email=$email");
             //send back to password reset page with msg that email doesnt exist in system
@@ -62,9 +62,22 @@
             header("Location: LoginPage.php?msg=passResetWorked");
         }
     }
-    //check to see if email exists
-        //if email exists in db
-            //update password
-    //if email doesn't exist send back to reset page with message of bad email
+
+
+    //gets the reset code from an email provided on previous page and stores the code in the session
+    function getResetCode($conn, $email){
+        $emailquery = "SELECT passed_reset_key FROM account WHERE email='$email'";
+        $result = $conn->query($emailquery);
+        if(mysqli_num_rows($result) != 1)
+        {
+            //send back to the page harris is making and say that this query failed because this email doesn't exist
+            header("Location: password_reset_page.php?RCE=1&email=$email");
+        }
+        else{
+            $_SESSION['password_reset_key'] = $result;
+            header("Location: password_reset_page.php");
+        }
+        
+    }
 
 ?>
