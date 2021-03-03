@@ -47,21 +47,21 @@
         header("Location: $page");
     }}
 
-    //verify that given password matches account password
-    function checkAccount($connection, $email, $passwrd){
-        $query = "
-        SELECT passwd FROM account
-        WHERE email= '$email';";
-
-        $results = $connection->query($query);
-
-        if($results == $passwrd)
-            return 1;
-        else
-            return 0;
+    function updateAccount($conn, $password, $email){
+        $emailquery = "SELECT * FROM account WHERE email='$email'";
+        $result = $conn->query($emailquery);
+        if(mysqli_num_rows($result) > 1)
+        {
+            header("Location: password_reset_page.php?EE=1&email=$email");
+            //send back to password reset page with msg that email doesnt exist in system
+        }
+        else{
+            $resetQuery = "UPDATE account set passwd = '$password' where email = '$email'";
+            $conn->query($resetQuery);
+            unset($_SESSION['password_reset_key']);
+            header("Location: LoginPage.php?msg=passResetWorked");
+        }
     }
-
-    function updateAccount($conn, $password, $email){}
     //check to see if email exists
         //if email exists in db
             //update password

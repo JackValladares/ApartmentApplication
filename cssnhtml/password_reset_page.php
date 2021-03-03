@@ -2,6 +2,7 @@
 	session_start();
 	if(isset($_GET['key']))
 	{
+		unset($_SESSION['key']);
 		$_SESSION['password_reset_key'] = $_GET['key'];
 	}
 ?>
@@ -12,6 +13,24 @@
 		<title>Password Reset</title>
 	</head>
 	<body>
+		<?php
+			if(isset($_GET['PDM']))
+			{
+				echo "<h1>Passwords don't match! Try again!</h1>";
+			}
+			if(isset($_GET['KNR']))
+			{
+				echo "<h1>The key you entered is not correct!</h1>";
+			}
+			if(isset($_GET['EE']) and isset($_GET['email']))
+			{
+				$temp = $_GET['email'];
+				echo "<h1>Email $temp not in system</h1>";
+			}
+
+			$temp = $_SESSION['password_reset_key'];
+			echo "key = $temp";
+		?>
 		<form class = "password-reset-form" action = "password-reset-post-submit.php" method="POST">
 			<ul>
                 <li>
@@ -32,7 +51,7 @@
 
                 <li>					
 					<label for="password-input2">Re-enter Password:</label>
-					<input type="password" id="password-input2" name = "password" minlength="8"
+					<input type="password" id="password-input2" name = "password2" minlength="8"
 					title = "Enter a password that is at least 8 characters long and contains at least one number, one Uppercase letter, and one lowercase letter" pattern = "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
 				</li>
 
@@ -41,22 +60,6 @@
 					<input type="submit" id="submit-button" value="Reset Password">
 				</li>
 			</ul>
-			<?php 
-			
-				//if the $_SESSION['register_success] variable exists then that means that registration failed
-				//we can update this to get the specific part that didn't work (email or pass or login) by creating
-				//more specific $_SESSION variables 
-				//POGGERS
-				if(isset($_SESSION['register_success'])){
-					echo "<h1>ERROR</h1>";
-					$error = $_SESSION['registration_error'];
-					echo "<h1>$error</h1>";
-					unset($_SESSION['registration_error']);
-					unset($_SESSION['register_success']);
-				}
-
-			?>
 		</form>
-			<h1 id = "test"></h1>
 	</body>
 </html>
