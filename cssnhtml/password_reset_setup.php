@@ -9,6 +9,7 @@
 	}
 
     $email = $_POST['email'];
+	generate_insert_key($conn, $email);
     getResetCode($conn, $email);
 ?>
 

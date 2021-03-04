@@ -59,6 +59,7 @@
             $resetQuery = "UPDATE account set passwd = '$password' where email = '$email'";
             $conn->query($resetQuery);
             unset($_SESSION['password_reset_key']);
+            reset_key($conn,$email);
             header("Location: LoginPage.php?msg=passResetWorked");
         }
     }
@@ -78,6 +79,19 @@
             header("Location: password_reset_page.php");
         }
         
+    }
+
+    function generate_insert_key($conn, $email)
+    {
+        $key = str_pad(mt_rand(1,99999999),8,'0',STR_PAD_LEFT);
+        $keyQuery = "UPDATE account set passwd_reset_key = '$key' where email = '$email'";
+        $conn->query($keyQuery);
+    }
+
+    function reset_key($conn, $email)
+    {
+        $keyQuery = "UPDATE account set passwd_reset_key = NULL where email = '$email'";
+        $conn->query($keyQuery);
     }
 
 ?>
