@@ -44,10 +44,9 @@
             echo "Query failed";
             die("fatal error on sql query");
         } 
-    //function used to redirect to any page
-    function sendToPage($page){
-        header("Location: $page");
-    }}
+        $_SESSION['regS'] = 1;
+        header("Location: LoginPage.php");
+    }
 
     //verify that given password matches account password
     function userLogin($conn, $email, $password){

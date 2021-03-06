@@ -10,10 +10,17 @@
 	</div>
 </head>
 
-
 <body style = "background-color: #cbb26a">
 	
 	<script type = "text/javascript" src="LoginFunctions.js"></script>
+	<?php
+	if(isset($_SESSION['regS']))
+	{
+		echo "<h1>AHHHHH</h1>";
+		echo '<script type = "text/Javascript">alert("Registration Successful! Please Login");</script>';
+		unset($_SESSION['regS']);
+	}
+?>
 
 	
 	
