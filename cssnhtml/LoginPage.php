@@ -36,11 +36,10 @@
 		<button class="loginButton" onClick="openLoginPage()"> Log In </button>
 	</div>
 
+
 	<form action="loginphp.php" method="post">
 		<div class="imgcontainer">
 	</div>
-
-
 
 
 	<div id="loginInterface">
