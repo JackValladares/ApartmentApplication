@@ -8,7 +8,7 @@
 		die("failed on DB connection");
 	}
 
-    $email = $_POST['email'];
+    $email = $_GET['email'];
 	generate_insert_key($conn, $email);
     getResetCode($conn, $email);
 ?>
