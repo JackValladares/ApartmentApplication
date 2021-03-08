@@ -24,7 +24,7 @@
 	//echo "<h1>Database Connected successfully</h1>";
 
 
-
+		//div with logo
 		echo "<div class=\"header\">";
 			echo "<img src = \"logo.png\" />";
 		echo "</div>";
@@ -32,44 +32,57 @@
 		echo "<br>";
 	
 	
-	
+		//Button that opens and closes login box
 		echo "<div class = \"buttonHolder\">";
 			echo "<button id=\"loginButton\"> Log In </button>";
 		echo "</div>";
 	
-		echo "<form action=\"javascript:login()\">";
+		//login form
+		echo "<form action=\"loginphp.php\ method=\"POST\">";
+			
+			//image
 			echo "<div class=\"imgcontainer\">";
-		echo "</div>";
+			echo "</div>";
+			
+			//div for formatting
+			echo "<div id=\"loginInterface\">";
+			
+				//email field
+				echo "<label for=\"email\"><b>Email </b></label>";
+				echo "<input id = \"email\" type=\"text\" placeholder=\"Enter Username\" name=\"username\" required>";
 
-
-
-
-		echo "<div id=\"loginInterface\">";
-		echo "<label for=\"email\"><b>Email </b></label>";
-			echo "<input id = \"email\" type=\"text\" placeholder=\"Enter Username\" name=\"username\" required>";
-
-			echo "<br>";
-			echo "<br>";
+				//spacing
+				echo "<br>";
+				echo "<br>";
 		
-			echo "<label for=\"password\"><b>Password </b></label>";
-			echo "<input type=\"password\" id = \"password\"placeholder=\"Enter Password\" name=\"password\" required>";
+				//password field
+				echo "<label for=\"password\"><b>Password </b></label>";
+				echo "<input type=\"password\" id = \"password\"placeholder=\"Enter Password\" name=\"password\" required>";
 
-			echo "<br>";
-			echo "<br>";
+				//spacing
+				echo "<br>";
+				echo "<br>";
 
-			echo "<button type=\"submit\" id=\"submitButton\" onClick=\"loginProcess()\">Login</button> ";
-			echo "<label>";
+				//submit button
+				echo "<button type=\"submit\" id=\"submitButton\">Login</button> ";
+				echo "<label>";
+				
+				//remember me
 				echo "<input type=\"checkbox\" checked=\"checked\" name=\"remember\"> Remember me";
-			echo "</label>";
+				echo "</label>";
 	
-			echo "<br>";
+				//spacing
+				echo "<br>";
 
-			echo "<span class=\"password\"><a href=\"#\">Forgot password?</a></span>";
+				//forgot password link
+				echo "<span class=\"password\"><a href=\"#\">Forgot password?</a></span>";
 
-		echo "</div>";
+			echo "</div>";
 		echo "</form>";
 		
-		function loginProcess()
+		
+		
+		/*function loginProcess()
 		{
 			
 			$findPass = "SELECT passwd FROM account WHERE email = $email;";
@@ -81,5 +94,5 @@
 			login($result);
 
 
-		}
+		}*/
 ?>
