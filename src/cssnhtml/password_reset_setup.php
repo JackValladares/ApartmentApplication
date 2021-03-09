@@ -1,5 +1,5 @@
 <?php
-	require_once("sqlFunctions.php");
+	require_once("../php/sqlFunctions.php");
 	session_start();
 	$conn = connectDB();
 	if(!$conn)

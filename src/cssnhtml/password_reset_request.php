@@ -1,7 +1,7 @@
 <?php
 if(isset($_POST['submit_email']) && $_POST['email'])
 {
-    require_once 'sqlFunctions.php';
+    require_once '../php/sqlFunctions.php';
     $conn = connectDB();
     $email = $_POST['email'];
     $select = "SELECT email, passwd FROM Account WHERE email='$email'";
