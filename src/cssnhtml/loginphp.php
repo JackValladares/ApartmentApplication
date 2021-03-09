@@ -1,6 +1,6 @@
 <?php
 
-    require_once("sqlFunctions.php");
+    require_once("../php/sqlFunctions.php");
 
     $conn = connectDB();
     if(!$conn)
