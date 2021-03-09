@@ -2,6 +2,8 @@
     -Figure out how $results data is stored and if it can be compared to string password.
     !-->
 
+<!--small test change!-->
+
 <?php
 
     session_start();
@@ -42,23 +44,27 @@
             echo "Query failed";
             die("fatal error on sql query");
         } 
-    //function used to redirect to any page
-    function sendToPage($page){
-        header("Location: $page");
-    }}
+        $_SESSION['regS'] = 1;
+        header("Location: LoginPage.php");
+    }
 
     //verify that given password matches account password
-    function checkAccount($connection, $email, $passwrd){
-        $query = "
-        SELECT passwd FROM account
-        WHERE email= '$email';";
+    function userLogin($conn, $email, $password){
+        $query = "SELECT * FROM Account WHERE email = \"$email\" AND passwd = \"$password\";";
+        $results = $conn->query($query);
+        if(!$results){
+            echo "user Login failed";
+            die("fatal error on sql query");
+          } 
 
-        $results = $connection->query($query);
+        $rows = $results->num_rows;
+        if($rows==1){
+            header("Location: LoginSuccessPage.php?user=\"$email\"");
+        }
+        else{
+            header("Location: LoginPage.php?msg=LoginFailed");
+        }
 
-        if($results == $passwrd)
-            return 1;
-        else
-            return 0;
     }
 
 ?>

@@ -10,10 +10,17 @@
 	</div>
 </head>
 
-
 <body style = "background-color: #cbb26a">
 	
 	<script type = "text/javascript" src="LoginFunctions.js"></script>
+	<?php
+	if(isset($_SESSION['regS']))
+	{
+		echo "<h1>AHHHHH</h1>";
+		echo '<script type = "text/Javascript">alert("Registration Successful! Please Login");</script>';
+		unset($_SESSION['regS']);
+	}
+?>
 
 	
 	
@@ -28,15 +35,21 @@
 	<div class = "buttonHolder">
 		<button class="loginButton" onClick="openLoginPage()"> Log In </button>
 	</div>
-	
-	<form action="action_page.php" method="post">
+
+
+	<form action="loginphp.php" method="post">
 		<div class="imgcontainer">
 	</div>
 
 
-
-
 	<div id="loginInterface">
+
+	<?php
+	if(isset($_GET['msg'])){
+		echo "Login Failed - Try Again <br>";
+	}
+
+	?>
 		<label for="username"><b>Username</b></label>
 		<input type="text" placeholder="Enter Username" name="username" required>
 
