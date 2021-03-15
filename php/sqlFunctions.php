@@ -42,10 +42,7 @@
             echo "Query failed";
             die("fatal error on sql query");
         } 
-    //function used to redirect to any page
-    function sendToPage($page){
-        header("Location: $page");
-    }}
+    }
 
     function updateAccount($conn, $password, $email){
         $emailquery = "SELECT * FROM account WHERE email='$email'";
@@ -92,6 +89,11 @@
     {
         $keyQuery = "UPDATE account set passwd_reset_key = NULL where email = '$email'";
         $conn->query($keyQuery);
+    }
+
+    function insert_profile($conn, $query)
+    {
+        $conn -> query($query);
     }
 
 ?>

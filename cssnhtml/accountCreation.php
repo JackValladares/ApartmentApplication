@@ -31,7 +31,7 @@
 
 				<li>
 					<input type="submit" id="submit-button" value="Create Account">
-					<input type="radio" id="profile_setup" name="profile_setup">
+					<input type="radio" id="profile_setup" name="profile_setup" value = "PLS">
 					<label for="profile_setup">Go to Profile Setup Questionnaire</label><br>
 				</li>
 			</ul>

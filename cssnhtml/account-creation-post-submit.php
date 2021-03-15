@@ -20,6 +20,11 @@
 			$user_name = $f_name ." ". $l_name;
 
 			insertAccount($conn,$email,$user_name,$password);
+			$questionAIR = $_POST['profile_setup'];
+			if($questionAIR == "PLS")
+				header("Location: profile_questionnaire.php");
+			else
+				header("Location: index.php");
 
 		  
 		?>
