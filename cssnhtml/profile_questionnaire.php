@@ -100,8 +100,8 @@
                 </li>
 
                 <li>
-                    <label for "major" name = "major">If in school, what is you major?</label>
-                    <input type = "text" name = "majorVal" required>
+                    <label for "bio" name = "bio">Enter a bio:</label> <br>
+                    <textarea name = "bioVal" rows = 6></textarea>
                 </li>
 
                 <li>

@@ -13,7 +13,7 @@
     $smoker = $_POST['smoker'];
     $peopleOver = $_POST['peopleOver'];
     $party = $_POST['party'];
-    $bio = $_POST['majorVal'];
+    $bio = $_POST['bioVal'];
 
 
     $conn = connectDB();
