@@ -14,6 +14,8 @@
 			$l_name = $_POST["l-name"];
 			$user_name = $f_name ." ". $l_name;
 			$_SESSION['email'] = $email;
+			$_SESSION['f_name'] = $f_name;
+			$_SESSION['l_name'] = $l_name;
 
 			insertAccount($conn,$email,$user_name,$password);
 			$questionAIR = $_POST['profile_setup'];

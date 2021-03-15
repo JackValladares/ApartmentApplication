@@ -9,9 +9,9 @@
 		<form class = "profile-questionnaire-form" action = "profile-questionnaire-post-submit.php" method="POST">
 			<ul>
             <?php
-            if(isset($_SESSION['f-name'])){
-                $f_name = $_SESSION['f-name'];
-                $l_name = $_SESSION['l-name'];
+            if(isset($_SESSION['f_name'])){
+                $f_name = $_SESSION['f_name'];
+                $l_name = $_SESSION['l_name'];
                 echo <<< _END
                 <li>
                     <label for "full-name">Full Name</label> <br>
