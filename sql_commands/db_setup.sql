@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS Profile (
     visitor_acceptance  varchar(3)      DEFAULT 'No',
     party_often         varchar(3)      DEFAULT 'No',
     bio_paragraph       varchar(1024)   DEFAULT '',
-    age                 varchar(3)      DEFAULT '20',
+    age                 varchar(3),
     user_id             INT,
 
     FOREIGN KEY (user_id) REFERENCES Account(user_id)
