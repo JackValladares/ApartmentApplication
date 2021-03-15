@@ -93,7 +93,20 @@
 
     function insert_profile($conn, $query)
     {
-        $conn -> query($query);
+        $result = $conn -> query($query);
+        if(!$result)
+        {
+            echo "error on insert profile";
+        }
+    }
+
+    function get_user_id($conn, $email)
+    {
+        $query = "SELECT user_id FROM account WHERE email='$email'";
+        $result = $conn -> query($query);
+        $result = $result->fetch_assoc();
+        $result = $result['user_id'];
+        return $result; 
     }
 
 ?>

@@ -6,7 +6,7 @@
 		<title>Profile Questionnaire</title>
 	</head>
 	<body>
-		<form class = "profile-questionnaire-form" action = "profile-questionnaire-post-submit.phps" method="POST">
+		<form class = "profile-questionnaire-form" action = "profile-questionnaire-post-submit.php" method="POST">
 			<ul>
             <?php
             if(isset($_SESSION['f-name'])){

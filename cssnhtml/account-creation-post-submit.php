@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>TEST</title>
-	</head>
-	<body>
-		<?php
+<?php
+			session_start();
 			require_once("../php/sqlFunctions.php");
 
 			$conn = connectDB();
@@ -18,6 +13,7 @@
 			$f_name = $_POST["f-name"];
 			$l_name = $_POST["l-name"];
 			$user_name = $f_name ." ". $l_name;
+			$_SESSION['email'] = $email;
 
 			insertAccount($conn,$email,$user_name,$password);
 			$questionAIR = $_POST['profile_setup'];
@@ -26,7 +22,4 @@
 			else
 				header("Location: index.php");
 
-		  
-		?>
-	</body>
-</html>
+?>
