@@ -107,4 +107,23 @@
         return $result; 
     }
 
+    function userLogin($conn, $email, $password){
+        $query = "SELECT * FROM Account WHERE email = \"$email\" AND passwd = \"$password\";";
+        $results = $conn->query($query);
+        if(!$results){
+            echo "user Login failed";
+            die("fatal error on sql query");
+          } 
+
+        $rows = $results->num_rows;
+        if($rows==1){
+            $_SESSION['userEmail'] = $email;
+            header("Location: index.php");
+        }
+        else{
+            header("Location: LoginPage.php?msg=LoginFailed");
+        }
+
+    }
+
 ?>
