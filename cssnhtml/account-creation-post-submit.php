@@ -25,7 +25,7 @@
 				$user_id = get_user_id($conn, $email);
 				$query = "INSERT INTO Profile (user_id)
 				 VALUES ('$user_id')";
-				insert_profile($query);
+				insert_profile($conn,$query);
 				header("Location: index.php");
 			}
 

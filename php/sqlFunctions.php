@@ -4,8 +4,6 @@
 
 <?php
 
-    session_start();
-
     //function to connect to a database and return a connection
 	function connectDB(){
 		$hn = "localhost";
