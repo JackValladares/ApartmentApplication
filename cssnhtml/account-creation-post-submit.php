@@ -21,7 +21,12 @@
 			$questionAIR = $_POST['profile_setup'];
 			if($questionAIR == "PLS")
 				header("Location: profile_questionnaire.php");
-			else
+			else{
+				$user_id = get_user_id($conn, $email);
+				$query = "INSERT INTO Profile (user_id)
+				 VALUES ('$user_id')";
+				insert_profile($query);
 				header("Location: index.php");
+			}
 
 ?>
