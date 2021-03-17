@@ -126,4 +126,34 @@
 
     }
 
+    function get_profile_data($conn, $email)
+    {
+        $query = "SELECT * from Profile where email = '$email'";
+        $results = $conn -> query($query);
+        if(!$results)
+        {
+            echo "Error on get_profile_data";
+        }
+
+        $results = $results->fetch_array(MYSQLI_ASSOC);
+
+        $my_array = array();
+        $my_array['propert_id'] = $results['property_id'];
+        $my_array['dob'] = $results['dob'];
+        $my_array['temp_pref'] = $results['temp_preference'];
+        $my_array['bedtime'] = $results['bedtime'];
+        $my_array['cleaning'] = $results['cleaning_sched'];
+        $my_array['smoker'] = $results['smoker'];
+        $my_array['drinker'] = $results['drinker'];
+        $my_array['visitors'] = $results['visitor_acceptance'];
+        $my_array['party'] = $results['party_often'];
+        $my_array['bio'] = $results['bio_paragraph'];
+        $my_array['age'] = $results['age'];
+        $my_array['user_id'] = $results['user_id'];
+
+        return $my_array;
+
+
+    }
+
 ?>
