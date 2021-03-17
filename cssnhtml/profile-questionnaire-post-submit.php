@@ -1,8 +1,10 @@
 <?php
+    session_start();
     require_once('../php/sqlFunctions.php');
 
     $gender = $_POST['gender'];
     $DOB = $_POST['date-of-birth'];
+    $DOB = date("Y-m-d", strtotime($DOB));
     
     $age = floor((time() - strtotime($DOB))/31556926);
 
@@ -17,13 +19,37 @@
 
 
     $conn = connectDB();
-    $user_id = get_user_id($conn, $_SESSION['email']);
-    $query = "INSERT INTO Profile(property_id, dob, temp_preference, bedtime, cleaning_sched, 
+    $email = $_SESSION['email'];
+    $user_id = (int) get_user_id($conn, $email);
+    /*$query = "INSERT INTO Profile(dob, temp_preference, bedtime, cleaning_sched, 
     smoker, drinker, visitor_acceptance, party_often, bio_paragraph, age, user_id)
-     VALUES (NULL,'$DOB','$prefTemp','$bedTime','$cleaning','$smoker','$drinker','$peopleOver','$party','$bio','$age','$user_id')";
+     VALUES ('.$DOB','.$prefTemp','.$bedTime','.$cleaning','.$smoker','.$drinker','.$peopleOver','.$party','.$bio','.$age','.$user_id')";
+    */
+
+    /*
+    Good Children:
+        user_id
+        temp_pref
+        bedTime
+        Smoker
+        drinker
+        visitor_acceptance
+        party_often
+        bio
+        age
+        DOB
+        cleaning schedule
+
+
+    Problem Children:
+
+    */
+
+    $ahh = "INSERT INTO Profile(`user_id`, `cleaning_sched`) VALUES ('$user_id', '$cleaning')";
+    $please = "INSERT INTO `Profile` (`property_id`, `dob`, `temp_preference`, `bedtime`, `cleaning_sched`, `smoker`, `drinker`, `visitor_acceptance`, `party_often`, `bio_paragraph`, `age`, `user_id`) VALUES (NULL, '$DOB', '$prefTemp', '$bedTime', '$cleaning', '$smoker', '$drinker', '$peopleOver', '$party', '$bio', '$age', '$user_id')"; 
 
     
-    insert_profile($conn, $query);
-    header("Location: AHHHHH.php");
+    insert_profile($conn, $please);
+    header("Location: gottem.php");
 
 ?>
