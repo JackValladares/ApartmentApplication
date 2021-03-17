@@ -129,15 +129,16 @@
 
     function get_profile_data($conn, $user_id)
     {
-        $query = "SELECT * FROM Profile WHERE user_id = $user_id";
+        $query = "SELECT * FROM Profile WHERE user_id = '$user_id'";
         $result = $conn->query($query);
         if(!$result)
         {
             echo "Error on get_profile_data";
         }
 
-        $results = $result->fetch_array(MYSQLI_ASSOC);
 
+        $results = $result->fetch_array(MYSQLI_ASSOC);
+        
         $my_array = array();
         $my_array['property_id'] = $results['property_id'];
         $my_array['dob'] = $results['dob'];
@@ -152,7 +153,11 @@
         $my_array['age'] = $results['age'];
         $my_array['user_id'] = $results['user_id'];
 
+
+        
+
         return $my_array;
+        
 
 
     }
