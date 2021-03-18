@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS Listing (
     bath_type       VARCHAR(7),
     price           varchar(256),
     user_id         INT,
-    
+
     FOREIGN KEY (user_id) REFERENCES Account(user_id)
 );
 
@@ -49,8 +49,9 @@ VALUES
 
 -- Create the Profile table if it does not already exist
 CREATE TABLE IF NOT EXISTS Profile (
-    property_id         INT             AUTO_INCREMENT PRIMARY KEY,
+    profile_id          INT             AUTO_INCREMENT PRIMARY KEY,
     dob                 DATE,
+    gender              varchar(11),
     temp_preference     varchar(3)      DEFAULT '70',
     bedtime             varchar(5)      DEFAULT '22:00',
     cleaning_sched      varchar(8)      DEFAULT 'Weekly',
