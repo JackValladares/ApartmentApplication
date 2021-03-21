@@ -29,7 +29,7 @@
 		<button class="loginButton" onClick="openLoginPage()"> Log In </button>
 	</div>
 	
-	<form action="action_page.php" method="post">
+	<form action="loginphp.php" method="post">
 		<div class="imgcontainer">
 	</div>
 
