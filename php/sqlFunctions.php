@@ -7,7 +7,8 @@
     session_start();
 
     //function to connect to a database and return a connection
-	function connectDB(){
+	function connectDB()
+    {
 		$hn = "localhost";
         $un = "root";
         $pw = "";
