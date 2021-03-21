@@ -24,7 +24,7 @@
 				echo "<h1>Email $temp is not in the system</h1>";
 			}
 		?>
-		<form class = "password-reset-form" action = "password-reset-post-submit.php" method="POST">
+		<form class = "password-reset-form" action = "password_reset_post_submit.php" method="POST">
 			<ul>
                 <li>
                     <label for = "reset_code">Password Reset Code:</label>

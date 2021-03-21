@@ -9,15 +9,14 @@
 	}
 
     $email = $_GET['email'];
-	generate_insert_key($conn, $email);
     getResetCode($conn, $email);
 ?>
 
 <!--
 
 How it works:
-	The passowrd reset request page harris is making redirects to this one which goes and gets
-	the reset code associated with the email they supplied on the requet page. If that email exists
+	The password reset request page harris is making redirects to this one which goes and gets
+	the reset code associated with the email they supplied on the request page. If that email exists
 	then it gets the code and stores it in the session. if not then it redirects back to harris's page
 	with an error message
 
