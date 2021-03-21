@@ -1,11 +1,10 @@
 <?php
 
-require_once '../php/sqlFunctions.php';
+require_once("..\php\sqlFunctions.php");
 
 class PasswordTest extends \PHPUnit\Framework\TestCase
 {
-    //public function setUp(){}
-    //public function tearDown(){}
+
 
     public function testGenerateInsertKey()
     {
