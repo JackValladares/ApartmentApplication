@@ -12,7 +12,8 @@
     $password1 = htmlspecialchars($_POST["password1"]);
     $password2 = htmlspecialchars($_POST["password2"]);
 
-    if($_SESSION['password_reset_key'] == $reset_code){
+    if($_SESSION['password_reset_key'] == $reset_code)
+    {
         if(strcmp($password1, $password2)==0){
             updateAccount($conn, $password1, $email);
         }

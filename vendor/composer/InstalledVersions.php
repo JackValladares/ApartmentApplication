@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '15ec50f3c35505361289e51a2ac8f7a11bbd0de3',
+    'reference' => '93066e613ad2409b3982db3e2006b04bc0370e80',
     'name' => '__root__',
   ),
   'versions' => 
@@ -42,7 +42,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '15ec50f3c35505361289e51a2ac8f7a11bbd0de3',
+      'reference' => '93066e613ad2409b3982db3e2006b04bc0370e80',
     ),
     'doctrine/instantiator' => 
     array (
@@ -110,6 +110,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '6a467b8989322d92aa1c8bf2bebcc6e5c2ba55c0',
+    ),
+    'phpmailer/phpmailer' => 
+    array (
+      'pretty_version' => 'v6.3.0',
+      'version' => '6.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '4a08cf4cdd2c38d12ee2b9fa69e5d235f37a6dcb',
     ),
     'phpspec/prophecy' => 
     array (
