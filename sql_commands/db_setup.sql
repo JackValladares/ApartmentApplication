@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS Profile (
     gender              varchar(11),
     temp_preference     varchar(3)      DEFAULT '70',
     bedtime             varchar(5)      DEFAULT '22:00',
-    cleaning_sched      varchar(8)      DEFAULT 'Weekly',
+    cleaning_sched      varchar(9)      DEFAULT 'Weekly',
     smoker              varchar(3)      DEFAULT 'No',
     drinker             varchar(3)      DEFAULT 'No',
     visitor_acceptance  varchar(3)      DEFAULT 'No',
