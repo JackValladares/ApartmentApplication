@@ -12,15 +12,19 @@
     $password1 = htmlspecialchars($_POST["password1"]);
     $password2 = htmlspecialchars($_POST["password2"]);
 
-    if($_SESSION['password_reset_key'] == $reset_code){
-        if(strcmp($password1, $password2)==0){
+    if($_SESSION['password_reset_key'] == $reset_code)
+    {
+        if(strcmp($password1, $password2)==0)
+        {
             updateAccount($conn, $password1, $email);
         }
-        else{
+        else
+        {
             header("Location: password_reset_page.php?PDM=1");
         }
     }
-    else{
+    else
+    {
         header("Location: password_reset_page.php?KNR=1");
     }
 
