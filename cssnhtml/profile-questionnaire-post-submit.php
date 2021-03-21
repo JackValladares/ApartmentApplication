@@ -16,6 +16,7 @@
     $peopleOver = $_POST['peopleOver'];
     $party = $_POST['party'];
     $bio = $_POST['bioVal'];
+    $gender = $_POST['gender'];
 
 
     $conn = connectDB();
@@ -46,7 +47,7 @@
     */
 
     $ahh = "INSERT INTO Profile(`user_id`, `cleaning_sched`) VALUES ('$user_id', '$cleaning')";
-    $please = "INSERT INTO `Profile` (`property_id`, `dob`, `temp_preference`, `bedtime`, `cleaning_sched`, `smoker`, `drinker`, `visitor_acceptance`, `party_often`, `bio_paragraph`, `age`, `user_id`) VALUES (NULL, '$DOB', '$prefTemp', '$bedTime', '$cleaning', '$smoker', '$drinker', '$peopleOver', '$party', '$bio', '$age', '$user_id')"; 
+    $please = "INSERT INTO `Profile` (`property_id`, `dob`, `temp_preference`, `bedtime`, `cleaning_sched`, `smoker`, `drinker`, `visitor_acceptance`, `party_often`, `bio_paragraph`, `age`, `user_id`, `gender`) VALUES (NULL, '$DOB', '$prefTemp', '$bedTime', '$cleaning', '$smoker', '$drinker', '$peopleOver', '$party', '$bio', '$age', '$user_id', '$gender')"; 
 
     
     insert_profile($conn, $please);

@@ -16,6 +16,7 @@
     $peopleOver = $_POST['peopleOver'];
     $party = $_POST['party'];
     $bio = $_POST['bioVal'];
+    $gender = $_POST['gender'];
 
 
     $conn = connectDB();
@@ -43,7 +44,7 @@
     Problem Children:
 
     */
-    $please = "UPDATE `Profile` SET cleaning_sched = '$cleaning', dob = '$DOB', age = '$age', party_often = '$party', temp_preference = '$prefTemp', bedtime = '$bedTime', smoker = '$smoker', drinker = '$drinker', visitor_acceptance = '$peopleOver', bio_paragraph = '$bio' WHERE user_id = $user_id"; 
+    $please = "UPDATE `Profile` SET cleaning_sched = '$cleaning', dob = '$DOB', age = '$age', party_often = '$party', temp_preference = '$prefTemp', bedtime = '$bedTime', smoker = '$smoker', drinker = '$drinker', visitor_acceptance = '$peopleOver', bio_paragraph = '$bio', gender = '$gender' WHERE user_id = $user_id"; 
 
     
     insert_profile($conn, $please);

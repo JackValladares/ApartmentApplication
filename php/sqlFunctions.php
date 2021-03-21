@@ -152,6 +152,7 @@
         $my_array['bio'] = $results['bio_paragraph'];
         $my_array['age'] = $results['age'];
         $my_array['user_id'] = $results['user_id'];
+        $my_array['gender'] = $results['gender'];
 
 
         
