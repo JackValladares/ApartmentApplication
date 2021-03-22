@@ -1,0 +1,20 @@
+.profile-img {
+width: 300px;
+height: 300px;
+border-radius: 50%;
+background-position: center center;
+background-size: cover;
+margin-left: 30px;
+}
+
+.profile-info {
+position: absolute;
+width: 300px;
+height: 300px;
+border-radius: 50%;
+background-position: center center;
+background-size: cover;
+margin-left: 30px;
+left: 350px;
+bottom: 385px;
+}
