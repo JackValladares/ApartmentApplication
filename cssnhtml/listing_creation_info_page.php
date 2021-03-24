@@ -1,4 +1,10 @@
-<?php session_start();?>
+<?php
+    session_start();
+    if(!(isset($_SESSION['email'])))
+  {
+    die("Login Dummy!");
+  }
+?>
 
 <!DOCTYPE html>
 <html>
