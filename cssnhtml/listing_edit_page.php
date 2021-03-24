@@ -41,8 +41,8 @@
                 <li>
                 <?php
                 $aptNum = $my_array['aptNum'];
-                    echo "<label for \"apptNum\" id = \"apptNumLabel\">Apartment Number:</label>";
-                    echo "<input type = \"number\" name = \"apptNum\" id = \"apptNum\" value = \"$aptNum\">";
+                    echo "<label for \"apt_no\" id = \"apptNumLabel\">Apartment Number:</label>";
+                    echo "<input type = \"number\" name = \"apt_no\" id = \"apptNum\" value = \"$aptNum\">";
                 ?>
                 </li>
                 <li>
@@ -100,7 +100,8 @@
                     <textarea name = "additionalInfo" id = "additonalInfo" rows = 6></textarea>
                     <?php
                     $listing_id = $my_array['listing_id'];
-                    echo "<input type = \"hidden\" name = \"listing_id\" value = \"$listing_id\">";
+                    echo $listing_id;
+                    echo "<input type = \"hidden\" name = \"listing_id\" value =\"$listing_id\">";
                     ?>
                 </li>
                 <li>

@@ -6,14 +6,14 @@
     $city = $_POST['city'];
     
     $state = $_POST['state'];
-    $apptNum = $_POST['apptNum'];
+    $apt_no = $_POST['apt_no'];
     $roomSize1 = $_POST['roomSize1'];
     $roomSize2 = $_POST['roomSize2'];
 
     $roomSize = $roomSize1 . ' x ' . $roomSize2;
 
     $bathType = $_POST['bathType'];
-    $price = $_POST['price'];
+    $price = (string) $_POST['price'];
     $smokingAllowed = $_POST['smokingAllowed'];
     $petsAllowed = $_POST['petsAllowed'];
     $additionalInfo = $_POST['additionalInfo'];
@@ -35,21 +35,19 @@
         room_size
         bath_type
         price
-        
-
 
     Problem Children:
-        user_id
+        
     */
 
     if($apptNum == "")
         {
-            $please = "UPDATE `Listing` SET (`address` = $address, `city` = $city, `state` = $state, `room_size` = $roomSize, `bath_type` = $bathType, `price` = $price) WHERE listing_id = '$listing_id";
+        $please = "UPDATE `Listing` SET `address` = '$address', `city` = '$city', `state` = '$state', `apt_no` = '$apt_no' , `room_size` = '$roomSize' , `bath_type` = '$bathType' , `price` = '$price' WHERE listing_id = '$listing_id'";
         }
     else
-        $please = "UPDATE `Listing` SET (`apt_no` = $apptNum ,`address` = $address, `city` = $city, `state` = $state, `room_size` = $roomSize, `bath_type` = $bathType, `price` = $price) WHERE listing_id = '$listing_id";
+    $please = "UPDATE `Listing` SET `address` = '$address', `city` = '$city', `state` = '$state', `apt_no` = '$apt_no' , `room_size` = '$roomSize' , `bath_type` = '$bathType' , `price` = '$price' WHERE listing_id = '$listing_id'";
 
-    $ahh = "INSERT INTO `Listing` (`user_id`) VALUES ('$user_id')";
+    $ahh = "UPDATE `Listing` SET `address` = '$address', `city` = '$city', `state` = '$state', `apt_no` = '$apt_no' , `room_size` = '$roomSize' , `bath_type` = '$bathType' , `price` = '$price' WHERE listing_id = '$listing_id'";
     //echo $email;
     insert_listing($conn, $please);
     header("Location: gottem.php");
