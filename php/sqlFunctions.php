@@ -103,6 +103,16 @@
         }
     }
 
+    function insert_listing($conn, $query)
+    {
+        $result = $conn->query($query);
+        
+        if(!$result)
+        {
+            header("Location: somethingwentwrongListingCreation.php");
+        }
+    }
+
     function get_user_id($conn, $email)
     {
         $query = "SELECT user_id FROM account WHERE email='$email'";
