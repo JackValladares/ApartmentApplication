@@ -6,7 +6,7 @@
     $city = $_POST['city'];
     
     $state = $_POST['state'];
-    $apptNum = $_POST['apptNum'];
+    $apptNum = "Apt " . $_POST['apptNum'];
     $roomSize1 = $_POST['roomSize1'];
     $roomSize2 = $_POST['roomSize2'];
 
@@ -20,7 +20,8 @@
 
 
     $conn = connectDB();
-    $email = $_GET['email'];
+    $email = $_SESSION['email'];
+    //$session_user_id = $_SESSION['user_id'];
     $user_id = (int) get_user_id($conn, $email);
     
 
@@ -42,7 +43,7 @@
 
     $please = "INSERT INTO `Listing` (`address`, `apt_no`, `city`, `state`, `room_size`, `bath_type`, `price`, `user_id`) VALUES ('$address', '$apptNum', '$city', '$state', '$roomSize', '$bathType', '$price', '$user_id')"; 
     $ahh = "INSERT INTO `Listing` (`user_id`) VALUES ('$user_id')";
-    
+    //echo $email;
     insert_listing($conn, $ahh);
     header("Location: gottem.php");
 

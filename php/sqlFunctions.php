@@ -133,6 +133,7 @@
         $rows = $results->num_rows;
         if($rows==1){
             $_SESSION['userEmail'] = $email;
+            $_SESSION['user_id'] = get_user_id($conn, $email);
             header("Location: index.php");
         }
         else{
