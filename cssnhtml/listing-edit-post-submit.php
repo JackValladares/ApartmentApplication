@@ -23,6 +23,7 @@
     $email = $_SESSION['email'];
     //$session_user_id = $_SESSION['user_id'];
     $user_id = (int) get_user_id($conn, $email);
+    $listing_id = $_POST['listing_id'];
     
 
     /*
@@ -42,9 +43,11 @@
     */
 
     if($apptNum == "")
-        { $please = "INSERT INTO `Listing` (`address`, `city`, `state`, `room_size`, `bath_type`, `price`, `user_id`) VALUES ('$address', '$city', '$state', '$roomSize', '$bathType', '$price', '$user_id')";}
+        {
+            $please = "UPDATE `Listing` SET (`address` = $address, `city` = $city, `state` = $state, `room_size` = $roomSize, `bath_type` = $bathType, `price` = $price) WHERE listing_id = '$listing_id";
+        }
     else
-        $please = "INSERT INTO `Listing` (`address`, `apt_no`, `city`, `state`, `room_size`, `bath_type`, `price`, `user_id`) VALUES ('$address', '$apptNum', '$city', '$state', '$roomSize', '$bathType', '$price', '$user_id')"; 
+        $please = "UPDATE `Listing` SET (`apt_no` = $apptNum ,`address` = $address, `city` = $city, `state` = $state, `room_size` = $roomSize, `bath_type` = $bathType, `price` = $price) WHERE listing_id = '$listing_id";
 
     $ahh = "INSERT INTO `Listing` (`user_id`) VALUES ('$user_id')";
     //echo $email;

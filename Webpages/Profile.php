@@ -1,3 +1,4 @@
+<?php session_start();?>
 <html>
 
 <head>
@@ -29,6 +30,8 @@
 		
 
 	</div>
+
+	<input type = "button" onclick = "parent.location = '../cssnhtml/listing_creation_info_page.php'" value = "Create Listing">
 	
 	
 	
