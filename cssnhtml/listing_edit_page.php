@@ -9,7 +9,7 @@
   require_once("../php/sqlFunctions.php");
   $conn = connectDB();
 
-  $listing_id = 19;
+  $listing_id = 5;
   $my_array = get_listing_data($conn, $listing_id);
 ?>
 
@@ -83,24 +83,44 @@
                 </li>
                 <li>
                     <label for "smokingAllowed" id = "smokingAllowed">Smoking Allowed?</label>
-                    <select name="smokingAllowed" id="smokingAllowedSelect" required>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                        </select>
-                </li>
-                <li>
-                    <label for "petsAllowed" id = "petsAllowed">Pets Allowed?</label>
-                    <select name="petsAllowed" id="petsAllowedSelect" required>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                        </select>
-                </li>
-                <li>
-                    <label for "additionalInfo" id = "additionalInfoLabel">Additional Info:</label> <br>
-                    <textarea name = "additionalInfo" id = "additonalInfo" rows = 6></textarea>
                     <?php
+                    $smoking = $my_array['smoking_allowed'];
+                    echo "<select name=\"smokingAllowed\" id=\"smokingAllowedSelect\" required>";
+                            if($smoking == "Yes"){
+                                echo "<option value=\"Yes\" selected>Yes</option>";
+                                echo "<option value=\"No\">No</option>";
+                            }
+                            else{
+                                echo "<option value=\"Yes\">Yes</option>";
+                                echo "<option value=\"No\" selected>No</option>";
+                            }
+                    
+                        ?>
+                        </select>
+                </li>
+                <li>
+                <?php
+                $pets = $my_array['pets_allowed'];
+                    echo "<label for \"petsAllowed\" id = \"petsAllowed\">Pets Allowed?</label>";
+                    echo "<select name=\"petsAllowed\" id=\"petsAllowedSelect\" required>";
+                        if($pets == "Yes"){
+                            echo "<option value=\"Yes\" selected>Yes</option>";
+                            echo "<option value=\"No\">No</option>";
+                        }
+                        else{
+                            echo "<option value=\"Yes\">Yes</option>";
+                            echo "<option value=\"No\" selected>No</option>";
+                        }
+                        ?>
+                        </select>
+                </li>
+                <li>
+                <?php
+                $misc_info = $my_array['misc_info'];
+                    echo "<label for \"additionalInfo\" id = \"additionalInfoLabel\">Additional Info:</label> <br>";
+                    echo "<textarea name = \"additionalInfo\" id = \"additonalInfo\" rows = 6>$misc_info</textarea>";
+                    
                     $listing_id = $my_array['listing_id'];
-                    echo $listing_id;
                     echo "<input type = \"hidden\" name = \"listing_id\" value =\"$listing_id\">";
                     ?>
                 </li>

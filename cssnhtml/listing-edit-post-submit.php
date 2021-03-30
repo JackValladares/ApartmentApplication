@@ -24,6 +24,10 @@
     //$session_user_id = $_SESSION['user_id'];
     $user_id = (int) get_user_id($conn, $email);
     $listing_id = $_POST['listing_id'];
+    $smoking_allowed = $_POST['smokingAllowed'];
+    $petsAllowed = $_POST['petsAllowed'];
+    $misc_info = $_POST['additionalInfo'];
+    echo $misc_info;
     
 
     /*
@@ -42,12 +46,12 @@
 
     if($apptNum == "")
         {
-        $please = "UPDATE `Listing` SET `address` = '$address', `city` = '$city', `state` = '$state', `apt_no` = '$apt_no' , `room_size` = '$roomSize' , `bath_type` = '$bathType' , `price` = '$price' WHERE listing_id = '$listing_id'";
+        $please = "UPDATE `Listing` SET `address` = '$address', `city` = '$city', `state` = '$state', `apt_no` = '$apt_no' , `room_size` = '$roomSize' , `bath_type` = '$bathType' , `price` = '$price', `smoking_allowed` = '$smoking_allowed', `pets_allowed` = '$petsAllowed', `misc_info` = '$misc_info' WHERE listing_id = '$listing_id'";
         }
     else
-    $please = "UPDATE `Listing` SET `address` = '$address', `city` = '$city', `state` = '$state', `apt_no` = '$apt_no' , `room_size` = '$roomSize' , `bath_type` = '$bathType' , `price` = '$price' WHERE listing_id = '$listing_id'";
+    $please = "UPDATE `Listing` SET `address` = '$address', `city` = '$city', `state` = '$state', `apt_no` = '$apt_no' , `room_size` = '$roomSize' , `bath_type` = '$bathType' , `price` = '$price', `smoking_allowed` = '$smoking_allowed', `pets_allowed` = '$petsAllowed', `misc_info` = '$misc_info' WHERE listing_id = '$listing_id'";
 
-    $ahh = "UPDATE `Listing` SET `address` = '$address', `city` = '$city', `state` = '$state', `apt_no` = '$apt_no' , `room_size` = '$roomSize' , `bath_type` = '$bathType' , `price` = '$price' WHERE listing_id = '$listing_id'";
+    $ahh = "UPDATE `Listing` SET `address` = '$address', `city` = '$city', `state` = '$state', `apt_no` = '$apt_no' , `room_size` = '$roomSize' , `bath_type` = '$bathType' , `price` = '$price', `misc_info` = '$misc_info' WHERE listing_id = '$listing_id'";
     //echo $email;
     insert_listing($conn, $please);
     header("Location: gottem.php");

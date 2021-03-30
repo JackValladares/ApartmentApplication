@@ -109,6 +109,7 @@
         
         if(!$result)
         {
+            //echo mysqli_error($conn);
             header("Location: somethingwentwrongListingCreation.php");
         }
     }
@@ -199,6 +200,9 @@
         $my_array['bathType'] = $results['bath_type'];
         $my_array['price'] = $results['price'];
         $my_array['listing_id'] = $results['listing_id'];
+        $my_array['pets_allowed'] = $results['pets_allowed'];
+        $my_array['smoking_allowed'] = $results['smoking_allowed'];
+        $my_array['misc_info'] = $results['misc_info'];
 
         return $my_array;
     }
