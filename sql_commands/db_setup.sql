@@ -34,6 +34,9 @@ CREATE TABLE IF NOT EXISTS Listing (
     room_size       VARCHAR(256),
     bath_type       VARCHAR(7),
     price           varchar(256),
+    misc_info       varchar(2048)           DEFAULT '',
+    pets_allowed    varchar(3)              DEFAULT 'No',
+    smoking_allowed varchar(3)              DEFAULT 'No',
     user_id         INT,
 
     FOREIGN KEY (user_id) REFERENCES Account(user_id)
