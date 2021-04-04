@@ -26,7 +26,7 @@
 
 		//div with logo
 		echo "<div class=\"header\">";
-			echo "<img src = \"imgs/ui/logo.png\" id =\"logo\"/>";
+			echo "<a href=\"Homepage.php\"><img src = \"imgs/ui/logo.png\" id =\"logo\"/></a>";
 		echo "</div>";
 	
 		echo "<br>";
@@ -38,7 +38,7 @@
 		echo "</div>";
 	
 		//login form
-		echo "<form action=\"loginphp.php\ method=\"POST\">";
+		echo "<form action=\"../cssnhtml/loginphp.php\" method=\"POST\">";
 			
 			//image
 			echo "<div class=\"imgcontainer\">";
