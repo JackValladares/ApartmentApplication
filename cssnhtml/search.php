@@ -76,6 +76,36 @@
 
     function searchListings()
     {
+        $bath = $_POST['bath'];
+        $price = $_POST['price'];
+        $pets = $_POST['pets'];
+        $smoke = $_POST['smoke'];
 
+        $query = "SELECT * FROM Listing WHERE";
+
+        $conditions = array();
+
+        if(!empty($bath))
+        {
+            $conditions[] = "bath_type = '$bath'";
+        }
+        if(!empty($price))
+        {
+            $conditions[] = "price = '$price'";
+        }
+        if(!empty($pets))
+        {
+            $conditions[] = "pets_allowed = '$pets'";
+        }
+        if(!empty($smoke))
+        {
+            $conditions[] = "smoking_allowed = '$smoke'";
+        }
+
+        if(count($conditions) > 0)
+        {
+            $sql .= " WHERE " . implode(' AND ', $conditions);
+        }
+        
     }
 ?>
