@@ -15,7 +15,7 @@
         $drink = $_POST['drink'];
         $party = $_POST['party'];
 
-        $query = "SELECT user_name, smoker, drinker FROM Profile JOIN Account 
+        $query = "SELECT user_name, smoker, drinker FROM Profile JOIN Account
             ON (Profile.user_id = Account.user_id)";
 
         $conditions = array();
@@ -43,12 +43,12 @@
         {
             echo "Query failed";
             die("fatal error on sql query");
-        } 
+        }
 
         //attempt to print rows
         $rows = mysqli_num_rows($result);
         if ($rows > 0)
-        {					
+        {
             // display search result count to user
             echo '<br /><div class="right"><b><u>'.$rows.'</u></b> results found</div>';
 
@@ -79,9 +79,16 @@
         $text = $_POST['query'];
         $bath = $_POST['bath'];
         $price = $_POST['price'];
-        $roomsize = $_POST['roomsize'];
-        $pets = int($_POST['pets']);
-        $smoke = int($_POST['smoke']);
+        //$roomsize = $_POST['roomsize'];
+        if(isset($_POST['pets']))
+{
+$pets = (int)$_POST['pets'];
+}
+if(isset($_POST['smoke']))
+{
+$smoke = (int)$_POST['smoke'];
+}
+       
 
         $query = "SELECT * FROM Listing";
 
@@ -89,27 +96,27 @@
 
         if(!empty($text))
         {
-            $conditions['text'] = "(address LIKE '%".$query."%' OR city LIKE '%".$query."%')";
+            $conditions[] = "(address LIKE '%".$query."%' OR city LIKE '%".$query."%')";
         }
         if(!empty($bath))
         {
-            $conditions['bath'] = "bath_type = '$bath'";
+            $conditions[] = "bath_type >= '$bath'";
         }
         if(!empty($price))
         {
-            $conditions['price'] = "price <= '$price'";
+            $conditions[] = "price <= '$price'";
         }
         if(!empty($roomsize))
         {
-            $conditions['roomsize'] = "room_size <= '$roomsize'";
+            $conditions[] = "room_size <= '$roomsize'";
         }
         if(!empty($pets))
         {
-            $conditions['pets'] = "pets_allowed = '$pets'";
+            $conditions[] = "pets_allowed = '$pets'";
         }
         if(!empty($smoke))
         {
-            $conditions['smoke'] = "smoking_allowed = '$smoke'";
+            $conditions[] = "smoking_allowed = '$smoke'";
         }
 
         if(count($conditions) > 0)
@@ -118,24 +125,21 @@
         }
 
         $_POST['sqlquery'] = $query;
+//header("../Webpages/ApartmentListings.php");
         /* commenting out for testing with Jack's system
         $result = $conn->$query;
         if(!$results)
         {
             echo "Query failed";
             die("fatal error on sql query");
-        } 
-
-
+        }
         //attempt to print rows
         $rows = mysqli_num_rows($result);
         if ($rows > 0)
-        {					
+        {
             // display search result count to user
             echo '<br /><div class="right"><b><u>'.$rows.'</u></b> results found</div>';
-
             echo '<table class="search">';
-
             // display all the search results to the user
             while ($row = mysqli_fetch_assoc($result))
             {    
@@ -149,7 +153,6 @@
                     <td><i>'.$row['drinker'].'</i></td>
                 </tr>';
             }
-
             echo '</table>';
         }
         else
