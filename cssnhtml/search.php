@@ -80,8 +80,8 @@
         $bath = $_POST['bath'];
         $price = $_POST['price'];
         $roomsize = $_POST['roomsize'];
-        $pets = $_POST['pets'];
-        $smoke = $_POST['smoke'];
+        $pets = int($_POST['pets']);
+        $smoke = int($_POST['smoke']);
 
         $query = "SELECT * FROM Listing";
 
@@ -89,27 +89,27 @@
 
         if(!empty($text))
         {
-            $conditions[] = "(address LIKE '%".$query."%' OR city LIKE '%".$query."%')";
+            $conditions['text'] = "(address LIKE '%".$query."%' OR city LIKE '%".$query."%')";
         }
         if(!empty($bath))
         {
-            $conditions[] = "bath_type = '$bath'";
+            $conditions['bath'] = "bath_type = '$bath'";
         }
         if(!empty($price))
         {
-            $conditions[] = "price <= '$price'";
+            $conditions['price'] = "price <= '$price'";
         }
         if(!empty($roomsize))
         {
-            $conditions[] = "room_size <= '$roomsize'";
+            $conditions['roomsize'] = "room_size <= '$roomsize'";
         }
         if(!empty($pets))
         {
-            $conditions[] = "pets_allowed = '$pets'";
+            $conditions['pets'] = "pets_allowed = '$pets'";
         }
         if(!empty($smoke))
         {
-            $conditions[] = "smoking_allowed = '$smoke'";
+            $conditions['smoke'] = "smoking_allowed = '$smoke'";
         }
 
         if(count($conditions) > 0)
