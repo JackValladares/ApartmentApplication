@@ -20,8 +20,17 @@
 	<div class="searchbarwrap">
 		<h2 class = "subtitle">Start searching for your perfect home now</h2>
 		<div class="search" style="display: inline-block;">
-		<form id = \"homesearch\" method=\"post\" action="../cssnhtml/search.php" >
-			<input type="text" style="float:left; display:inline;" class="searchTerm" placeholder="Milledgeville, Georgia" name="query">
+		<form id = \"homesearch\" method="post" action="../Webpages/ApartmentListings.php" >
+			<input type="text" style="float:left; display:inline;" class="searchTerm" placeholder="Milledgeville, Georgia" name="query" />
+			<br><p>Bathrooms
+			<input type="range" min="1" max="5" value="1" style="float:left; display:inline; width: 20%" name="bath" />
+			<p>Price
+			<input type="range" min="0" max="1500" value="1" style="float:left; display:inline; width: 20%" name="price" />
+			<p>Pets
+			<input type="checkbox" style="float:left; display:inline; width: 20%" name="pets" />
+			<p>Smoke
+			<input type="checkbox" style="float:left; display:inline; width: 20%" name="smoke" />
+			
 			<button type="submit" style="float:right; display:inline;" class="searchButton"><i class="fa fa-search"></i></button>
 		</form>
 		</div>

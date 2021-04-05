@@ -4,6 +4,20 @@ html, body {
 	min-width: 1140px;
 }
 
+.tableEntryPurple {
+	padding:5px;
+	height: 50px;
+	background: #fee3ff;
+	width: 100%;
+}
+
+.tableEntryWhite {
+	padding:5px;
+	height: 50px;
+	background: white;
+	width: 100%;
+}
+
 .header {
 	padding: 15px;
 	background: #EDEBEB;
