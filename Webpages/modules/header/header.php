@@ -1,7 +1,7 @@
 
 
-<link rel="stylesheet" href="css/stylesheet.css">
-<script type = "text/javascript" src="javascript/LoginFunctions.js"></script>
+<link rel="stylesheet" href="../Webpages/css/stylesheet.css">
+<script type = "text/javascript" src="../Webpages/javascript/LoginFunctions.js"></script>
 
 
 <?php
@@ -26,7 +26,7 @@
 
 		//div with logo
 		echo "<div class=\"header\">";
-			echo "<img src = \"imgs/ui/logo.png\" id =\"logo\"/>";
+			echo "<img src = \"../Webpages/imgs/ui/logo.png\" id =\"logo\"/>";
 		echo "</div>";
 	
 		echo "<br>";
@@ -34,7 +34,7 @@
 	
 		//Button that opens and closes login box
 		echo "<div class = \"buttonHolder\">";
-			echo "<button id=\"loginButton\"> <img src = \"imgs/ui/buttons/login.png\"  id=\"loginPNG\" \"/> </button>";
+			echo "<button id=\"loginButton\"> <img src = \"../Webpages/imgs/ui/buttons/login.png\"  id=\"loginPNG\" \"/> </button>";
 		echo "</div>";
 	
 		//login form
@@ -76,6 +76,9 @@
 
 				//forgot password link
 				echo "<span class=\"password\"><a href=\"#\">Forgot password?</a></span>";
+				//create account link
+				echo "<span class=\"createaccount\"><a href=\"../cssnhtml/profile_questionnaire.php\"><br>Create Account</a></span>";
+
 
 			echo "</div>";
 		echo "</form>";

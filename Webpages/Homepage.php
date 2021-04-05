@@ -19,11 +19,11 @@
 	
 	<div class="searchbarwrap">
 		<h2 class = "subtitle">Start searching for your perfect home now</h2>
-		<div class="search">
-			<input type="text" class="searchTerm" placeholder="Milledgeville, Georgia">
-			<button type="submit" class="searchButton">
-				<i class="fa fa-search"></i>
-			</button>
+		<div class="search" style="display: inline-block;">
+		<form id = \"homesearch\" method=\"post\" action="../cssnhtml/search.php" >
+			<input type="text" style="float:left; display:inline;" class="searchTerm" placeholder="Milledgeville, Georgia" name="query">
+			<button type="submit" style="float:right; display:inline;" class="searchButton"><i class="fa fa-search"></i></button>
+		</form>
 		</div>
 	</div>
 	
