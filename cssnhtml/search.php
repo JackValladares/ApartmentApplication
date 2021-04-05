@@ -35,7 +35,7 @@
 
         if(count($conditions) > 0)
         {
-            $sql .= " WHERE " . implode(' AND ', $conditions);
+            $query .= " WHERE " . implode(' AND ', $conditions);
         }
 
         $result = $conn->$query;
@@ -76,6 +76,7 @@
 
     function searchListings()
     {
+        $text = $_POST['query'];
         $bath = $_POST['bath'];
         $price = $_POST['price'];
         $roomsize = $_POST['roomsize'];
@@ -86,6 +87,10 @@
 
         $conditions = array();
 
+        if(!empty($text))
+        {
+
+        }
         if(!empty($bath))
         {
             $conditions[] = "bath_type = '$bath'";
@@ -109,8 +114,42 @@
 
         if(count($conditions) > 0)
         {
-            $sql .= " WHERE " . implode(' AND ', $conditions);
+            $query .= " WHERE " . implode(' AND ', $conditions);
         }
 
+        $result = $conn->$query;
+        if(!$results)
+        {
+            echo "Query failed";
+            die("fatal error on sql query");
+        } 
+
+        //attempt to print rows
+        $rows = mysqli_num_rows($result);
+        if ($rows > 0)
+        {					
+            // display search result count to user
+            echo '<br /><div class="right"><b><u>'.$rows.'</u></b> results found</div>';
+
+            echo '<table class="search">';
+
+            // display all the search results to the user
+            while ($row = mysqli_fetch_assoc($result))
+            {    
+                echo '<tr>
+                    <td>'.$row['address'].'</td>
+                </tr>
+                <tr>
+                    <td>'.$row['smoker'].'</td>
+                </tr>
+                <tr>
+                    <td><i>'.$row['drinker'].'</i></td>
+                </tr>';
+            }
+
+            echo '</table>';
+        }
+        else
+            echo 'No results found. Please search something else.';
     }
 ?>
