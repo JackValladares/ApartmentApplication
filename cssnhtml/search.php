@@ -89,7 +89,7 @@
 
         if(!empty($text))
         {
-
+            $conditions[] = "(address LIKE '%".$query."%' OR city LIKE '%".$query."%;";
         }
         if(!empty($bath))
         {
