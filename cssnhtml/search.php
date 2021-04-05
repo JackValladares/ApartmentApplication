@@ -89,7 +89,7 @@
 
         if(!empty($text))
         {
-            $conditions[] = "(address LIKE '%".$query."%' OR city LIKE '%".$query."%;";
+            $conditions[] = "(address LIKE '%".$query."%' OR city LIKE '%".$query."%')";
         }
         if(!empty($bath))
         {
@@ -117,12 +117,15 @@
             $query .= " WHERE " . implode(' AND ', $conditions);
         }
 
+        $_POST['sqlquery'] = $query;
+        /* commenting out for testing with Jack's system
         $result = $conn->$query;
         if(!$results)
         {
             echo "Query failed";
             die("fatal error on sql query");
         } 
+
 
         //attempt to print rows
         $rows = mysqli_num_rows($result);
@@ -151,5 +154,7 @@
         }
         else
             echo 'No results found. Please search something else.';
+        */
+
     }
 ?>
