@@ -83,7 +83,7 @@
         $pets = $_POST['pets'];
         $smoke = $_POST['smoke'];
 
-        $query = "SELECT * FROM Listing WHERE";
+        $query = "SELECT * FROM Listing";
 
         $conditions = array();
 
