@@ -78,6 +78,7 @@
     {
         $bath = $_POST['bath'];
         $price = $_POST['price'];
+        $roomsize = $_POST['roomsize'];
         $pets = $_POST['pets'];
         $smoke = $_POST['smoke'];
 
@@ -91,7 +92,11 @@
         }
         if(!empty($price))
         {
-            $conditions[] = "price = '$price'";
+            $conditions[] = "price <= '$price'";
+        }
+        if(!empty($roomsize))
+        {
+            $conditions[] = "room_size <= '$roomsize'";
         }
         if(!empty($pets))
         {
@@ -106,6 +111,6 @@
         {
             $sql .= " WHERE " . implode(' AND ', $conditions);
         }
-        
+
     }
 ?>
