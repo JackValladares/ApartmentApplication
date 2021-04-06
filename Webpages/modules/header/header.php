@@ -27,7 +27,7 @@
 		//div with logo
 		echo "<div class=\"header\">";
 
-		echo "<img src = \"../Webpages/imgs/ui/logo.png\" id =\"logo\"/>";
+		echo "<a href=\"Homepage.php\"><img src = \"imgs/ui/logo.png\" id =\"logo\"/></a>";
 
 		echo "</div>";
 	
