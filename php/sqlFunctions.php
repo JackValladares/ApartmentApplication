@@ -3,7 +3,7 @@
     !-->
 
 <?php
-
+    session_start();
     //function to connect to a database and return a connection
 	function connectDB()
     {
@@ -103,6 +103,17 @@
         }
     }
 
+    function insert_listing($conn, $query)
+    {
+        $result = $conn->query($query);
+        
+        if(!$result)
+        {
+            //echo mysqli_error($conn);
+            header("Location: somethingwentwrongListingCreation.php");
+        }
+    }
+
     function get_user_id($conn, $email)
     {
         $query = "SELECT user_id FROM account WHERE email='$email'";
@@ -122,8 +133,9 @@
 
         $rows = $results->num_rows;
         if($rows==1){
-            $_SESSION['userEmail'] = $email;
-            header("Location: index.php");
+            $_SESSION['email'] = $email;
+            $_SESSION['user_id'] = get_user_id($conn, $email);
+            header("Location: ../Webpages/Profile.php");
         }
         else{
             header("Location: LoginPage.php?msg=LoginFailed");
@@ -165,6 +177,34 @@
         
 
 
+    }
+
+    function get_listing_data($conn, $listing_id)
+    {
+        $query = "SELECT * FROM Listing WHERE listing_id = '$listing_id'";
+        $result = $conn->query($query);
+        if(!$result)
+        {
+            echo "Error on get_profile_data";
+        }
+
+
+        $results = $result->fetch_array(MYSQLI_ASSOC);
+
+        $my_array = array();
+        $my_array['address'] = $results['address'];
+        $my_array['city'] = $results['city'];
+        $my_array['state'] = $results['state'];
+        $my_array['aptNum'] = $results['apt_no'];
+        $my_array['roomSize'] = $results['room_size'];
+        $my_array['bathType'] = $results['bath_type'];
+        $my_array['price'] = $results['price'];
+        $my_array['listing_id'] = $results['listing_id'];
+        $my_array['pets_allowed'] = $results['pets_allowed'];
+        $my_array['smoking_allowed'] = $results['smoking_allowed'];
+        $my_array['misc_info'] = $results['misc_info'];
+
+        return $my_array;
     }
 
 ?>
