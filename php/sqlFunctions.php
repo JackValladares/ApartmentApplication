@@ -123,6 +123,7 @@
     }
 
     function userLogin($conn, $email, $password){
+        session_start();
         $query = "SELECT * FROM Account WHERE email = \"$email\" AND passwd = \"$password\";";
         $results = $conn->query($query);
         if(!$results){
