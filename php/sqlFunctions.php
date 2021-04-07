@@ -3,7 +3,6 @@
     !-->
 
 <?php
-    session_start();
     //function to connect to a database and return a connection
 	function connectDB()
     {
@@ -156,7 +155,7 @@
         $results = $result->fetch_array(MYSQLI_ASSOC);
         
         $my_array = array();
-        $my_array['property_id'] = $results['property_id'];
+        $my_array['profile_id'] = $results['profile_id'];
         $my_array['dob'] = $results['dob'];
         $my_array['temp_pref'] = $results['temp_preference'];
         $my_array['bedtime'] = $results['bedtime'];

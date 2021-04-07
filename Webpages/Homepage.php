@@ -5,7 +5,7 @@
 	<link rel="stylesheet" href="css/stylesheet.css" />
 	<link rel="stylesheet" href="css/searchbar.css" />
 	<link rel="stylesheet" href="css/previewcards.css" />
-	<script type = "text/javascript" src="LoginFunctions.js"></script>
+	<script type = "text/javascript" src="../Webpages/javascript/LoginFunctions.js"></script>
 
 </head>
 

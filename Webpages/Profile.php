@@ -5,7 +5,7 @@
 
 	<link rel="stylesheet" href="css/stylesheet.css" />
 	<link rel="stylesheet" href="css/profile.css" />
-	<script type = "text/javascript" src="LoginFunctions.js"></script>
+	<script type = "text/javascript" src="../Webpages/javascript/LoginFunctions.js"></script>
 
 </head>
 
@@ -32,6 +32,7 @@
 	</div>
 
 	<input type = "button" onclick = "parent.location = '../cssnhtml/listing_creation_info_page.php'" value = "Create Listing">
+	<input type = "button" onclick = "parent.location = '../cssnhtml/edit_profile.php'" value = 'Edit Profile'>
 	
 	
 	
