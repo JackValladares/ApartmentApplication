@@ -29,6 +29,8 @@
 		<br><br>
 		<h2>My Listings</h2>
 		Insert listings here
+		The strat is to get all of the litings that mach the user_id then print them out in a table
+		form with a button that links to the edit page of that specific lisitng!
 		
 
 	</div>

@@ -10,6 +10,7 @@
     }
     $email = $_POST["username"];
     $password = $_POST["password"];
+    
 
     userLogin($conn,$email,$password);
 
