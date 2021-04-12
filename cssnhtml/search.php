@@ -10,10 +10,22 @@
 
     function searchProfiles()
     {
-        $name = $_POST['name'];
-        $smoke = $_POST['smoke'];
-        $drink = $_POST['drink'];
-        $party = $_POST['party'];
+        if(isset($_POST['name']))
+        {
+            $name = $_POST['name'];
+        }
+        if(isset($_POST['smoke']))
+        {
+            $smoke = $_POST['smoke'];
+        }
+        if(isset($_POST['drink']))
+        {
+            $drink = $_POST['drink'];
+        }
+        if(isset($_POST['party']))
+        {
+            $party = $_POST['party'];
+        }
 
         $query = "SELECT user_name, smoker, drinker FROM Profile JOIN Account
             ON (Profile.user_id = Account.user_id)";
@@ -38,12 +50,16 @@
             $query .= " WHERE " . implode(' AND ', $conditions);
         }
 
+        $_POST['sqlquery'] = $query;
+        /* TODO: figure out if the following code will be implemented.
+        For now, going to touch base with Jack to see if it's similar to the listing
         $result = $conn->$query;
         if(!$results)
         {
             echo "Query failed";
             die("fatal error on sql query");
         }
+
 
         //attempt to print rows
         $rows = mysqli_num_rows($result);
@@ -72,6 +88,8 @@
         }
         else
             echo 'No results found. Please search something else.';
+        
+        */
     }
 
     function searchListings()
@@ -81,13 +99,13 @@
         $price = $_POST['price'];
         //$roomsize = $_POST['roomsize'];
         if(isset($_POST['pets']))
-{
-$pets = (int)$_POST['pets'];
-}
-if(isset($_POST['smoke']))
-{
-$smoke = (int)$_POST['smoke'];
-}
+        {
+            $pets = (int)$_POST['pets'];
+        }
+        if(isset($_POST['smoke']))
+        {
+            $smoke = (int)$_POST['smoke'];
+        }
        
 
         $query = "SELECT * FROM Listing";
@@ -125,7 +143,7 @@ $smoke = (int)$_POST['smoke'];
         }
 
         $_POST['sqlquery'] = $query;
-//header("../Webpages/ApartmentListings.php");
+        //header("../Webpages/ApartmentListings.php");
         /* commenting out for testing with Jack's system
         $result = $conn->$query;
         if(!$results)
