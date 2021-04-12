@@ -207,4 +207,17 @@
         return $my_array;
     }
 
+    function getListingViaUserID($conn, $id)
+    {
+        $query = "SELECT * from Listing WHERE user_id = '$id'";
+        $result = $conn->query($query);
+        $rows = $result->num_rows;
+        $array = array();
+        array_push($array, $rows);
+        //$result=$result->fetch_array(MYSQLI_NUM);
+        array_push($array, $result);
+        return $array;
+
+    }
+
 ?>

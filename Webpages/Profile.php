@@ -6,6 +6,18 @@
 	<link rel="stylesheet" href="css/stylesheet.css" />
 	<link rel="stylesheet" href="css/profile.css" />
 	<script type = "text/javascript" src="../Webpages/javascript/LoginFunctions.js"></script>
+	<style type="text/css">
+			table {
+				border-collapse: collapse;
+				width: 100%;
+			}
+
+			td, th{
+				border: 1px solid black;
+				text-align: left;
+				padding: 8px; 
+			}
+		</style>
 
 </head>
 
@@ -14,7 +26,7 @@
 
 	<?php include 'modules/header/header.php';
 	$user = $_SESSION['email'];
-	echo "$user"; ?>
+	echo "Logged in as: $user"; ?>
 	
 	<div class="profile-img" style="background-image: url('imgs/example-profile/jack.jpeg');"></div>
 	<div class="profile-info">
@@ -28,9 +40,44 @@
 		<p>[Loud] [6-Month] [Social] [Frequent Guests]
 		<br><br>
 		<h2>My Listings</h2>
-		Insert listings here
-		The strat is to get all of the litings that mach the user_id then print them out in a table
-		form with a button that links to the edit page of that specific lisitng!
+
+		<?php 
+		
+		require_once("../php/sqlFunctions.php");
+		$conn = connectDB();
+		$email = $_SESSION['email'];
+		$user_id = get_user_id($conn, $email);
+		$myarray = getListingViaUserID($conn, $user_id);
+		$array = $myarray[1];
+
+
+		echo "<table>";
+			echo "<tr>";
+				echo "<th>Address</th>";
+				echo "<th>Apt No.</th>";
+				echo "<th>City</th>";
+				echo "<th>State</th>";
+				echo "<th>Edit</th>";
+			echo "</tr>";
+			
+		while($row = mysqli_fetch_assoc($array))
+        {
+			$address = $row['address'];
+			$aptNo = $row['apt_no'];
+			$city = $row['city'];
+			$state = $row['state'];
+			$listingID = $row['listing_id'];
+			$editBTN = "<input type = \"button\" onclick = \"parent.location = '../cssnhtml/listing_edit_page.php?listing_id='+$listingID\" value = \"Edit Listing\">";
+            echo "<td>$address</td>";
+			echo "<td>$aptNo</td>";
+			echo "<td>$city</td>";
+			echo "<td>$state</td>";
+			echo "<td>$editBTN</td>";
+			echo "</tr>";
+        }
+		echo "</table>";
+
+		?>
 		
 
 	</div>

@@ -9,7 +9,7 @@
   require_once("../php/sqlFunctions.php");
   $conn = connectDB();
 
-  $listing_id = 5;
+  $listing_id = $_GET['listing_id'];
   $my_array = get_listing_data($conn, $listing_id);
 ?>
 
