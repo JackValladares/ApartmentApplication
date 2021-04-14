@@ -81,7 +81,7 @@
 				//forgot password link
 				echo "<span class=\"password\"><a href=\"#\">Forgot password?</a></span>";
 				//create account link
-				echo "<span class=\"createaccount\"><a href=\"../cssnhtml/profile_questionnaire.php\"><br>Create Account</a></span>";
+				echo "<span class=\"createaccount\"><a href=\"../cssnhtml/accountCreation.php\"><br>Create Account</a></span>";
 
 
 			echo "</div>";

@@ -58,6 +58,7 @@
 				echo "<th>City</th>";
 				echo "<th>State</th>";
 				echo "<th>Edit</th>";
+				echo "<th>Delete</th>";
 			echo "</tr>";
 			
 		while($row = mysqli_fetch_assoc($array))
@@ -68,11 +69,13 @@
 			$state = $row['state'];
 			$listingID = $row['listing_id'];
 			$editBTN = "<input type = \"button\" onclick = \"parent.location = '../cssnhtml/listing_edit_page.php?listing_id='+$listingID\" value = \"Edit Listing\">";
-            echo "<td>$address</td>";
+            $deleteBTN = "<input type = \"button\" onclick = \"parent.location = '../cssnhtml/deleteListing.php?listing_id='+$listingID\" value = \"Delete Listing\">";
+			echo "<td>$address</td>";
 			echo "<td>$aptNo</td>";
 			echo "<td>$city</td>";
 			echo "<td>$state</td>";
 			echo "<td>$editBTN</td>";
+			echo "<td>$deleteBTN</td>";
 			echo "</tr>";
         }
 		echo "</table>";
