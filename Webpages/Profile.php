@@ -25,19 +25,43 @@
 <body style = "background-color: #fafafa">
 
 	<?php include 'modules/header/header.php';
+	require_once("../php/sqlFunctions.php");
 	$user = $_SESSION['email'];
-	echo "Logged in as: $user"; ?>
+	$conn = connectDB();
+	$user_id = get_user_id($conn, $user);
+	$array = get_profile_data($conn, $user_id); ?>
 	
 	<div class="profile-img" style="background-image: url('imgs/example-profile/jack.jpeg');"></div>
 	<div class="profile-info">
-		<h1>Jack Valladares</h1>
-		<a href = "mailto: jackvalladares@gmail.com" style = "font-size: 20px">jackvalladares@gmail.com</a>
+	<?php
+		$fName = $array['fName'];
+		$lName = $array['lName'];
+		echo "<h1>$fName $lName</h1>";
+		
+		echo "<a href = \"mailto: $user\" style = \"font-size: 20px\">$user</a>";
+		?>
 		<div class = "locationform" style = "width: 500px; flex-direction: row;">
 			<h3>College: Georgia College and State University </h3><button style = "height: 30px;"> Change School </button>
 		</div>
 		<br>
 		<h2>My tags</h2>
-		<p>[Loud] [6-Month] [Social] [Frequent Guests]
+		<?php
+		echo "<p>";
+		$smoking = $array['smoker'];
+		$drinker = $array['drinker'];
+		$party = $array['party'];
+		$peopleOver = $array['visitors'];
+		if($smoking == "True") {echo "[Smokes]";} else {echo "[Doesn't Smoke]";}
+		if($drinker == "True") {echo " [Drinks]";} else {echo " [Doesn't Drink]";}
+		if($party == "True") {echo " [Parties Often]";} else {echo " [Doesn't party often]";}
+		if($peopleOver == "True") {echo " [Likes People Over]";} else {echo " [Doesn't like people over]";}
+		echo "</p>";
+		
+		echo "<h2>About Me</h2>";
+		$bio = $array['bio'];
+		echo "<p>$bio</p>"
+
+		?>
 		<br><br>
 		<h2>My Listings</h2>
 

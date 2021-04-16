@@ -169,6 +169,8 @@
         $my_array['age'] = $results['age'];
         $my_array['user_id'] = $results['user_id'];
         $my_array['gender'] = $results['gender'];
+        $my_array['fName'] = $results['fName'];
+        $my_array['lName'] = $results['lName'];
 
 
         
