@@ -14,7 +14,13 @@
 
     $arr = get_listing_data($conn, $listingID);
 
-    
+    echo "<div class=\"listing-img\" style=\"background-image: url('../Webpages/imgs/example-real-estate/popeyes.png');\"></div>";
+    echo "<div class=\"listing-info\">";
+        echo "<h1>".$arr['address']."</h1>";
+        echo "<h2>Info</h2";
+        echo "<p>".$arr['city'].", ".$arr['state']."</p>";
+        echo "<p>Price starting at $".$arr['price']."</p>";
+    echo "</div>";
 ?>
 
 </body>
