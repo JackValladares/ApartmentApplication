@@ -3,7 +3,6 @@
     !-->
 
 <?php
-    session_start();
     //function to connect to a database and return a connection
 	function connectDB()
     {
@@ -124,6 +123,7 @@
     }
 
     function userLogin($conn, $email, $password){
+        session_start();
         $query = "SELECT * FROM Account WHERE email = \"$email\" AND passwd = \"$password\";";
         $results = $conn->query($query);
         if(!$results){
@@ -156,7 +156,7 @@
         $results = $result->fetch_array(MYSQLI_ASSOC);
         
         $my_array = array();
-        $my_array['property_id'] = $results['property_id'];
+        $my_array['profile_id'] = $results['profile_id'];
         $my_array['dob'] = $results['dob'];
         $my_array['temp_pref'] = $results['temp_preference'];
         $my_array['bedtime'] = $results['bedtime'];
@@ -169,6 +169,8 @@
         $my_array['age'] = $results['age'];
         $my_array['user_id'] = $results['user_id'];
         $my_array['gender'] = $results['gender'];
+        $my_array['fName'] = $results['fName'];
+        $my_array['lName'] = $results['lName'];
 
 
         
@@ -205,6 +207,19 @@
         $my_array['misc_info'] = $results['misc_info'];
 
         return $my_array;
+    }
+
+    function getListingViaUserID($conn, $id)
+    {
+        $query = "SELECT * from Listing WHERE user_id = '$id'";
+        $result = $conn->query($query);
+        $rows = $result->num_rows;
+        $array = array();
+        array_push($array, $rows);
+        //$result=$result->fetch_array(MYSQLI_NUM);
+        array_push($array, $result);
+        return $array;
+
     }
 
 ?>

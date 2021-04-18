@@ -53,6 +53,8 @@ VALUES
 -- Create the Profile table if it does not already exist
 CREATE TABLE IF NOT EXISTS Profile (
     profile_id          INT             AUTO_INCREMENT PRIMARY KEY,
+    fName               varchar(20),
+    lName               varchar(20),
     dob                 DATE,
     gender              varchar(11),
     temp_preference     varchar(3)      DEFAULT '70',

@@ -17,32 +17,9 @@
 
             require_once("../php/sqlFunctions.php");
             $conn = connectDB();
-            $user_id = $_GET['user_id'];
+            $user_id = $_SESSION['user_id'];
             $results = get_profile_data($conn, $user_id);
 
-            if(isset($_SESSION['f_name'])){
-                $f_name = $_SESSION['f_name'];
-                $l_name = $_SESSION['l_name'];
-                echo <<< _END
-                <li>
-                    <label for "full-name">Full Name</label> <br>
-                    <input type = "text" name = "first-name" value = "$f_name">
-                    <input type = "text" name = "last-name" value = "$l_name">
-                </li>
-                _END;
-            }
-            else 
-            {
-
-
-echo <<< _END
-                <li>
-                    <label for "full-name">Full Name</label> <br>
-                    <input type = "text" name = "first-name" value = "First">
-                    <input type = "text" name = "last-name" value = "Last">
-                </li>
-_END;
-            }
                 
 echo <<< _END
 

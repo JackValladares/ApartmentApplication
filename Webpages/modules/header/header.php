@@ -35,7 +35,9 @@
 	
 	
 		//Button that opens and closes login box
-		echo "<div class = \"buttonHolder\">";
+		if(!(isset($_SESSION['user_id'])))
+		{
+			echo "<div class = \"buttonHolder\">";
 			echo "<button id=\"loginButton\"> <img src = \"../Webpages/imgs/ui/buttons/login.png\"  id=\"loginPNG\" \"/> </button>";
 		echo "</div>";
 	
@@ -79,11 +81,24 @@
 				//forgot password link
 				echo "<span class=\"password\"><a href=\"#\">Forgot password?</a></span>";
 				//create account link
-				echo "<span class=\"createaccount\"><a href=\"../cssnhtml/profile_questionnaire.php\"><br>Create Account</a></span>";
+				echo "<span class=\"createaccount\"><a href=\"../cssnhtml/accountCreation.php\"><br>Create Account</a></span>";
 
 
 			echo "</div>";
 		echo "</form>";
+		}
+		else
+		{
+			echo "<div class = \"buttonHolder\">";
+			//echo "<button id=\"loginButton\"> <img src = \"../Webpages/imgs/ui/buttons/login.png\"  id=\"loginPNG\" \"/ onclick = \"header(\"Location: Profile.php\")\"> </button>";
+			echo "<a href=\"Profile.php\"><img src = \"../Webpages/imgs/ui/buttons/login.png\" id =\"logo\"/></a>";
+		echo "</div>";
+		echo "</div>";
+		echo "</form>";
+
+		}
+
+		
 		
 		
 		
