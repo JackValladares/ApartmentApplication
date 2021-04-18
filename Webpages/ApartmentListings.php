@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="../Webpages/css/searchbar.css" />
 	<link rel="stylesheet" href="../Webpages/css/previewcards.css" />
 	<script type = "text/javascript" src="LoginFunctions.js"></script>
+	<title>Listing Results</title>
 
 </head>
 

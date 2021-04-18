@@ -5,8 +5,23 @@
 	<head>
 		<title>Account Creation</title>
 	</head>
+	<script>
+		function validate()
+		{
+			var firstName = document.forms["account-creation-form"]["f-name-input"].value;
+			var lastName = document.forms["account-creation-form"]["l-name-input"].value;
+			var error = "Please enter only letters for your name.";
+
+			if(!firstName.match(/^[a-zA-Z]+$/) || !lastName.match(/^[a-zA-Z]+$/))
+			{
+				alert(error);
+				return false;
+			}
+			return true;
+		}
+	</script>
 	<body>
-		<form class = "account-creation-form" action = "account-creation-post-submit.php" method="POST">
+		<form class = "account-creation-form" action = "account-creation-post-submit.php" method="POST" onsubmit=>
 			<ul>
 				<li>
 					<label for="email-input">Email</label>
