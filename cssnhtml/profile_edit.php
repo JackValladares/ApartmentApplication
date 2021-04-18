@@ -48,6 +48,6 @@
 
     
     insert_profile($conn, $please);
-    header("Location: gottem.php");
+    header("Location: ../webpages/profile.php");
 
 ?>
