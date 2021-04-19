@@ -1,0 +1,1 @@
+* Add fname and lname to the Profile table in ER Diagram
