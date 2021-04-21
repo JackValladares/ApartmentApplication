@@ -41,9 +41,10 @@
         user_id
     */
 
-    if($apptNum == "")
+    /*if($apptNum == "")
         { $please = "INSERT INTO `Listing` (`address`, `city`, `state`, `room_size`, `bath_type`, `price`, `user_id`, `smoking_allowed`, `pets_allowed`,`misc_info`) VALUES ('$address', '$city', '$state', '$roomSize', '$bathType', '$price', '$user_id', '$smokingAllowed', '$petsAllowed', '$additionalInfo')";}
     else
+    */
         $please = "INSERT INTO `Listing` (`address`, `apt_no`, `city`, `state`, `room_size`, `bath_type`, `price`, `user_id`, `smoking_allowed`, `pets_allowed`,`misc_info`) 
         VALUES ('$address', '$aptNum', '$city', '$state', '$roomSize', '$bathType', '$price', '$user_id', '$smokingAllowed', '$petsAllowed', '$additionalInfo')"; 
 

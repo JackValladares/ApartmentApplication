@@ -222,4 +222,14 @@
 
     }
 
+    function getEmailFromID($conn, $id)
+    {
+        $query = "SELECT * from Account WHERE user_id = '$id'";
+        $result = $conn->query($query);
+        $results = $result->fetch_array(MYSQLI_ASSOC);
+        $email = $results['email'];
+        
+        return $email;
+    }
+
 ?>
