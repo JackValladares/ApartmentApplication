@@ -10,8 +10,10 @@
     }
     $email = $_POST["username"];
     $password = $_POST["password"];
+    $rememberMe = $_POST['remember'];
     
 
-    userLogin($conn,$email,$password);
+    userLogin($conn,$email,$password, $rememberMe, $hp = 1);
+    
 
 ?>

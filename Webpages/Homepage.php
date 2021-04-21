@@ -1,5 +1,15 @@
 <?php 
+	require_once("../php/sqlFunctions.php");
 	session_start();
+	$conn = connectDB();
+	if(isset($_COOKIE['email']))
+	{
+		$email = $_COOKIE['email'];
+		$password = $_COOKIE['password'];
+		$remember = 1;
+		$goToHomePage = 1;
+		userLogin($conn, $email, $password, $remember, $goToHomePage);
+	}
 ?>
 <html>
 
@@ -47,7 +57,6 @@
 	
 	
 <?php 
-	require_once("../php/sqlFunctions.php");
 	$conn = connectDB();
 	$data = getRandomListings($conn);
 	$listing0 = $data[0];

@@ -122,7 +122,7 @@
         return $result; 
     }
 
-    function userLogin($conn, $email, $password){
+    function userLogin($conn, $email, $password, $remember, $hp){
         session_start();
         $query = "SELECT * FROM Account WHERE email = \"$email\" AND passwd = \"$password\";";
         $results = $conn->query($query);
@@ -135,7 +135,15 @@
         if($rows==1){
             $_SESSION['email'] = $email;
             $_SESSION['user_id'] = get_user_id($conn, $email);
-            header("Location: ../Webpages/Profile.php");
+            //set Cookies!!
+            if($remember){
+                setcookie("email", $email, time() + (86400 * 30), "/", 'samesite=strict');
+                setcookie("password", $password, time() + (86400 * 30), "/", 'samesite=strict');
+            }
+            if($hp==0)
+                header("Location: ../Webpages/Profile.php");
+            else
+            header("Location: ../Webpages/Homepage.php");
         }
         else{
             header("Location: LoginPage.php?msg=LoginFailed");
