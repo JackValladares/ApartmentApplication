@@ -232,4 +232,35 @@
         return $email;
     }
 
+    function getRandomListings($conn)
+    {
+        $query = "SELECT * from Listing";
+        $result = $conn->query($query);
+        $array = array();
+
+        while($row = mysqli_fetch_assoc($result))
+        {
+
+            array_push($array, $row);
+
+        }
+        
+        $max = count($array) -1;
+        $finalArray = array();
+        $numArray = array();
+        while(count($finalArray)!=4)
+        {
+            $randomNum = rand(0, $max);
+            if(in_array($randomNum, $numArray)){
+            }
+            else{
+                array_push($numArray, $randomNum);
+                array_push($finalArray, $array[$randomNum]);
+            }
+        }
+
+
+        return $finalArray;
+    }
+
 ?>
