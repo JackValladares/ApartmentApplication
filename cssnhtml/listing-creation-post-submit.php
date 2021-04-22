@@ -6,7 +6,7 @@
     $city = $_POST['city'];
     
     $state = $_POST['state'];
-    $aptNum = $_POST['aptNum'];
+    $apptNum = $_POST['apptNum'];
     $roomSize1 = $_POST['roomSize1'];
     $roomSize2 = $_POST['roomSize2'];
 
@@ -44,12 +44,11 @@
     if($apptNum == "")
         { $please = "INSERT INTO `Listing` (`address`, `city`, `state`, `room_size`, `bath_type`, `price`, `user_id`, `smoking_allowed`, `pets_allowed`,`misc_info`) VALUES ('$address', '$city', '$state', '$roomSize', '$bathType', '$price', '$user_id', '$smokingAllowed', '$petsAllowed', '$additionalInfo')";}
     else
-        $please = "INSERT INTO `Listing` (`address`, `apt_no`, `city`, `state`, `room_size`, `bath_type`, `price`, `user_id`, `smoking_allowed`, `pets_allowed`,`misc_info`) 
-        VALUES ('$address', '$aptNum', '$city', '$state', '$roomSize', '$bathType', '$price', '$user_id', '$smokingAllowed', '$petsAllowed', '$additionalInfo')"; 
+        $please = "INSERT INTO `Listing` (`address`, `apt_no`, `city`, `state`, `room_size`, `bath_type`, `price`, `user_id`, `smoking_allowed`, `pets_allowed`,`misc_info`) VALUES ('$address', '$apptNum', '$city', '$state', '$roomSize', '$bathType', '$price', '$user_id', '$user_id', '$smokingAllowed', '$petsAllowed', '$additionalInfo')"; 
 
     $ahh = "INSERT INTO `Listing` (`user_id`) VALUES ('$user_id')";
     //echo $email;
     insert_listing($conn, $please);
-    header("Location: ../webpages/profile.php");
+    header("Location: gottem.php");
 
 ?>

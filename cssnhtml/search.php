@@ -94,55 +94,54 @@
 
     function searchListings()
     {
-        $text = $_POST['query'];
-        $bath = $_POST['bath'];
-        $price = $_POST['price'];
-        //$roomsize = $_POST['roomsize'];
-        if(isset($_POST['pets']))
+		
+		$conditions = array();
+		
+		if(isset($_GET['query']))
+		{
+			$text = $_GET['query'];
+			$conditions[] = "(address LIKE '%$text%' OR city LIKE '%$text%')";
+		}
+		/*if(isset($_GET['bath']))
+		{
+			$bath = $_GET['bath'];
+			$conditions[] = "bath_type >= '$bath'";
+			
+		}*/
+		
+		if(isset($_GET['price']) && (int)$_GET['price'] > 0)
+		{
+			$price = (int)$_GET['price'];
+			$conditions[] = "price <= $price";
+		}
+		
+		if(isset($_GET['roomsize']))
+		{
+			$roomsize = $_GET['roomsize'];
+			$conditions[] = "room_size <= '$roomsize'";
+		}
+		
+        if(isset($_GET['pets']) && $_GET['pets'] != "Don't Care")
         {
-            $pets = (int)$_POST['pets'];
+			$pets = $_GET['pets'];
+			$conditions[] = "pets_allowed = '$pets'";
         }
-        if(isset($_POST['smoke']))
+		
+        if(isset($_GET['smoke']) && $_GET['smoke'] != "Don't Care")
         {
-            $smoke = (int)$_POST['smoke'];
+			$smoke = $_GET['smoke'];
+			$conditions[] = "smoking_allowed = '$smoke'";
         }
-       
-
+		
         $query = "SELECT * FROM Listing";
 
-        $conditions = array();
-
-        if(!empty($text))
-        {
-            $conditions[] = "(address LIKE '%".$query."%' OR city LIKE '%".$query."%')";
-        }
-        if(!empty($bath))
-        {
-            $conditions[] = "bath_type >= '$bath'";
-        }
-        if(!empty($price))
-        {
-            $conditions[] = "price <= '$price'";
-        }
-        if(!empty($roomsize))
-        {
-            $conditions[] = "room_size <= '$roomsize'";
-        }
-        if(!empty($pets))
-        {
-            $conditions[] = "pets_allowed = '$pets'";
-        }
-        if(!empty($smoke))
-        {
-            $conditions[] = "smoking_allowed = '$smoke'";
-        }
-
+        
         if(count($conditions) > 0)
         {
             $query .= " WHERE " . implode(' AND ', $conditions);
         }
 
-        $_POST['sqlquery'] = $query;
+        $query;
         //header("../Webpages/ApartmentListings.php");
         /* commenting out for testing with Jack's system
         $result = $conn->$query;
@@ -176,6 +175,6 @@
         else
             echo 'No results found. Please search something else.';
         */
-
+		return $query;
     }
 ?>
