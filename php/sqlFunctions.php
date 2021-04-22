@@ -271,4 +271,10 @@
         return $finalArray;
     }
 
+    function deleteAccount($conn, $user_id)
+    {
+        $query = "DELETE FROM `Account` WHERE user_id = $user_id";
+        $result = $conn->query($query);
+    }
+
 ?>
