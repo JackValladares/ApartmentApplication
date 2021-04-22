@@ -91,7 +91,7 @@
 		{
 			echo "<div class = \"buttonHolder\">";
 			//echo "<button id=\"loginButton\"> <img src = \"../Webpages/imgs/ui/buttons/login.png\"  id=\"loginPNG\" \"/ onclick = \"header(\"Location: Profile.php\")\"> </button>";
-			echo "<a href=\"Profile.php\"><img src = \"../Webpages/imgs/ui/buttons/login.png\" id =\"logo\"/></a>";
+			echo "<a href=\"Profile.php\" id = \"loginButton\"><img id = \"loginPNG\"src = \"../Webpages/imgs/ui/buttons/login.png\" id =\"logo\"></a>";
 		echo "</div>";
 		echo "</div>";
 		echo "</form>";
