@@ -8,7 +8,7 @@ session_start();
     setcookie("email", "", time() - 3600);
     setcookie("password", "", time() - 3600);
 $userID = get_user_id($conn, $email);
-deleteAccount($conn);
+deleteAccount($conn, $userID);
 header("Location: ../webpages/homepage.php");
 
 ?>
