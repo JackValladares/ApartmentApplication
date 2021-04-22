@@ -22,8 +22,6 @@
     $conn = connectDB();
     $email = $_SESSION['email'];
     $user_id = (int) get_user_id($conn, $email);
-    $fName = $_SESSION['f_name'];
-    $lName = $_SESSION['l_name'];
     /*$query = "INSERT INTO Profile(dob, temp_preference, bedtime, cleaning_sched, 
     smoker, drinker, visitor_acceptance, party_often, bio_paragraph, age, user_id)
      VALUES ('.$DOB','.$prefTemp','.$bedTime','.$cleaning','.$smoker','.$drinker','.$peopleOver','.$party','.$bio','.$age','.$user_id')";
@@ -49,10 +47,10 @@
     */
 
     $ahh = "INSERT INTO Profile(`user_id`, `cleaning_sched`) VALUES ('$user_id', '$cleaning')";
-    $please = "INSERT INTO `Profile` (`dob`, `fName`, `lName`,`temp_preference`, `bedtime`, `cleaning_sched`, `smoker`, `drinker`, `visitor_acceptance`, `party_often`, `bio_paragraph`, `age`, `user_id`, `gender`) VALUES ('$DOB', '$fName', '$lName', '$prefTemp', '$bedTime', '$cleaning', '$smoker', '$drinker', '$peopleOver', '$party', '$bio', '$age', '$user_id', '$gender')"; 
+    $please = "INSERT INTO `Profile` (`dob`, `temp_preference`, `bedtime`, `cleaning_sched`, `smoker`, `drinker`, `visitor_acceptance`, `party_often`, `bio_paragraph`, `age`, `user_id`, `gender`) VALUES ('$DOB', '$prefTemp', '$bedTime', '$cleaning', '$smoker', '$drinker', '$peopleOver', '$party', '$bio', '$age', '$user_id', '$gender')"; 
 
     
     insert_profile($conn, $please);
-    header("Location: ../webpages/Homepage.php");
+    header("Location: gottem.php");
 
 ?>

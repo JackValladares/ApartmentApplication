@@ -1,6 +1,3 @@
-<?php 
-	session_start();
-?>
 <html>
 
 <head>
@@ -8,7 +5,8 @@
 	<link rel="stylesheet" href="css/stylesheet.css" />
 	<link rel="stylesheet" href="css/searchbar.css" />
 	<link rel="stylesheet" href="css/previewcards.css" />
-	<script type = "text/javascript" src="../Webpages/javascript/LoginFunctions.js"></script>
+	<script type = "text/javascript" src="javascript/LoginFunctions.js"></script>
+	<script type = "text/javascript" src="javascript/ApartmentSearch.js"></script>
 
 </head>
 
@@ -22,20 +20,41 @@
 	
 	<div class="searchbarwrap">
 		<h2 class = "subtitle">Start searching for your perfect home now</h2>
-		<div class="search" style="display: inline-block;">
-		<form id = \"homesearch\" method="post" action="../Webpages/ApartmentListings.php" >
-			<input type="text" style="float:left; display:inline;" class="searchTerm" placeholder="Milledgeville, Georgia" name="query" />
-			<br><p>Bathrooms
-			<input type="range" min="1" max="5" value="1" style="float:left; display:inline; width: 20%" name="bath" />
-			<p>Price
-			<input type="range" min="0" max="1500" value="1" style="float:left; display:inline; width: 20%" name="price" />
-			<p>Pets
-			<input type="checkbox" style="float:left; display:inline; width: 20%" name="pets" />
-			<p>Smoke
-			<input type="checkbox" style="float:left; display:inline; width: 20%" name="smoke" />
+		
+		<button id='expandButton' style = "height: 30px;" >More Search Preferences</button>
+		
+		<div id = "homesearchbar" action="../Webpages/ApartmentListings.php" >
+			<input form = "homesearch" type="text" style="float:left; display:inline; width: 90%;" class="searchTerm" placeholder="Milledgeville, Georgia" name="query" />
+			<button form = "homesearch" type="submit" style="float:right; display:inline; position:absolute; width: 10%;" class="searchButton"><i class="fa fa-search"></i></button>
+		</div>
+		
+		<div id="search" style="visibility: hidden; display: inline-block;">
+			<form id = "homesearch" method = "get" action="../Webpages/ApartmentListings.php" >
+
+				<!--<br><p>Bathrooms
+				<input type="number" min="1" max="5" value="1" style="float:left; display:inline; width: 50%" name="bath" />-->
+				<p>Max Price
+				<input type="number" min="0" max="1000000" style="float:left; display:inline; width: 50%; margin-right: 10px;" name="price" />
+				<p> Pets
+				
+				<select name="pets" style="float:left; display:inline; width: 50%; margin-right: 10px;" >
+				
+					<option Value = "Don't Care">Don't Care</option>
+					<option value = "Yes">Yes</option>
+					<option value = "No">No</option>
+
+				</select>
+				<p> Smoke
+				
+				<select name="smoke" style="float:left; display:inline; width: 50%; margin-right: 10px;" >
+				
+					<option Value = "Don't Care">Don't Care</option>
+					<option value = "Yes">Yes</option>
+					<option value = "No">No</option>
+
+				</select>
 			
-			<button type="submit" style="float:right; display:inline;" class="searchButton"><i class="fa fa-search"></i></button>
-		</form>
+			</form>
 		</div>
 	</div>
 	
