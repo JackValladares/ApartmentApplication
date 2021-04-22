@@ -1,3 +1,17 @@
+<?php 
+	require_once("../php/sqlFunctions.php");
+	session_start();
+	$conn = connectDB();
+	if(isset($_COOKIE['email']))
+	{
+		$email = $_COOKIE['email'];
+		$password = $_COOKIE['password'];
+		$remember = 1;
+		$goToHomePage = 1;
+		userLogin($conn, $email, $password, $remember, $goToHomePage);
+	}
+?>
+
 <html>
 
 <head>
@@ -65,43 +79,77 @@
 	</div>
 	
 	
+<?php 
+	$conn = connectDB();
+	$data = getRandomListings($conn);
+	$listing0 = $data[0];
+	$listing1 = $data[1];
+	$listing2 = $data[2];
+	$listing3 = $data[3];
+
+?>
+
 <div class="card">
   <img src="imgs/example-real-estate/bellamy.png" alt="Avatar" style="width:300px; height: 300px;">
   <div class="container">
-    <h4><b>The Bellamy</b></h4>
-    <p>145 S Irwin St</p>
-	<p>Milledgeville, Georgia, 31061</p>
-	<p>$399 - $650
+  <?php
+	$address = $listing0['address'];
+    $apt = $listing0['apt_no'];
+    echo "<p>$address $apt</p>";
+	$city = $listing0['city'];
+	$state = $listing0['state'];
+	echo "<p>$city, $state</p>";
+	$price = $listing0['price'];
+	echo "<p>$$price/month</p>";
+	?>
   </div>
 </div>
 
 <div class="card-2">
   <img src="imgs/example-real-estate/revelry.png" alt="Avatar" style="width:300px; height: 300px;">
   <div class="container">
-    <h4><b>Revelry Flats</b></h4>
-    <p>500 W Franklin St</p>
-	<p>Milledgeville, Georgia, 31061</p>
-	<p>$500 - $700
+  <?php
+	$address = $listing1['address'];
+    $apt = $listing1['apt_no'];
+    echo "<p>$address $apt</p>";
+	$city = $listing1['city'];
+	$state = $listing1['state'];
+	echo "<p>$city, $state</p>";
+	$price = $listing1['price'];
+	echo "<p>$$price/month</p>";
+	?>
   </div>
 </div>
 
 <div class="card-3">
   <img src="imgs/example-real-estate/popeyes.png" alt="Avatar" style="width:300px; height: 300px;">
   <div class="container">
-    <h4><b>Popeyes</b></h4>
-    <p>145 Chicken St</p>
-	<p>Milledgeville, Georgia, 31061</p>
-	<p>$6969
+  <?php
+	$address = $listing2['address'];
+    $apt = $listing2['apt_no'];
+    echo "<p>$address $apt</p>";
+	$city = $listing2['city'];
+	$state = $listing2['state'];
+	echo "<p>$city, $state</p>";
+	$price = $listing2['price'];
+	echo "<p>$$price/month</p>";
+	?>
   </div>
 </div>
 
 <div class="card-4">
   <img src="imgs/example-real-estate/coollane.png" alt="Avatar" style="width:300px; height: 300px;">
   <div class="container">
-    <h4><b>2 Roommates Wanted</b></h4>
-    <p>164 S Irwin St</p>
-	<p>Milledgeville, Georgia, 31061</p>
-	<p>$400/person
+  <?php
+	$address = $listing3['address'];
+	$apt = $listing3['apt_no'];
+    echo "<p>$address $apt</p>";
+	$city = $listing3['city'];
+	$state = $listing3['state'];
+	echo "<p>$city, $state</p>";
+	$price = $listing3['price'];
+	echo "<p>$$price/month</p>";
+	?>
   </div>
 </div>
 	
