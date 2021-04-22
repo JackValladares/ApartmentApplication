@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS Listing (
     smoking_allowed varchar(3)              DEFAULT 'No',
     user_id         INT,
 
-    FOREIGN KEY (user_id) REFERENCES Account(user_id)
+    FOREIGN KEY (user_id) REFERENCES Account(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Insert some test data
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS Profile (
     age                 varchar(3),
     user_id             INT,
 
-    FOREIGN KEY (user_id) REFERENCES Account(user_id)
+    FOREIGN KEY (user_id) REFERENCES Account(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 INSERT INTO Profile(dob, bio_paragraph, user_id)
