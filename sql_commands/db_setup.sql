@@ -1,5 +1,5 @@
 --
--- Mock up for Account Table creation script
+-- DB Table Setup script
 --
 
 -- Create the database if it doesn't already exist;
@@ -76,3 +76,19 @@ VALUES
         ("1999-03-02", "FLCL fan", 1),
         ("1990-08-26", "Not Jack", 2),
         ("2000-12-14", "Zoid", 3);
+
+CREATE TABLE IF NOT EXISTS ProfileImages (
+    image_id            INT     AUTO_INCREMENT PRIMARY KEY,
+    profile_image       BLOB,
+    profile_id          INT,
+
+    FOREIGN KEY (profile_id) REFERENCES Profile(profile_id) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS ListingImages (
+    image_id            INT     AUTO_INCREMENT PRIMARY KEY,
+    listing_image       BLOB,
+    listing_id          INT,
+
+    FOREIGN KEY (listing_id) REFERENCES Listing(listing_id) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB;
