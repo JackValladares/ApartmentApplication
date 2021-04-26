@@ -9,6 +9,7 @@ html, body {
 	height: 50px;
 	background: #fee3ff;
 	width: 100%;
+	box-shadow: 5px 5px 3px #888888;
 }
 
 .tableEntryWhite {
@@ -16,6 +17,7 @@ html, body {
 	height: 50px;
 	background: white;
 	width: 100%;
+	box-shadow: 5px 5px 3px #888888;
 }
 
 .header {

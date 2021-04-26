@@ -28,7 +28,11 @@
 	
 	//echo $query;
     $results = $conn->query($query);
-	$c = 1;
+	$c = 0;
+	$listingrow = 0;
+	
+	$rowheight = 350;
+	$rowwidth = 35;
 	
 	if($results->num_rows > 0)
 	{
@@ -40,15 +44,38 @@
 			$state = $row['state'];
 			$price = $row['price'];
 			$id = $row['listing_id'];
+			$pets = $row['pets_allowed'];
+			$smoking = $row['smoking_allowed'];
+			$roomsize = $row['room_size'];
+			$bath = $row['bath_type'];
 			
 			if($c == 0)
 			{
-				echo "<div class = 'tableEntryPurple' style = 'height: 125px;'>" . "<h3>" . "<a href='../cssnhtml/listing.php?id=$id'>". $address . " </a> " . ", " . $city . ", " . $state . "<br><br> Price: $" . $row['price'] . "</h3></div>";
+				
+				echo 
+				"<a href='../cssnhtml/listing.php?id=$id'>". 
+				"<div class = 'tableEntryPurple' style = 'height: $rowheight; box-shadow: 5px 5px 3px #888888; width: $rowwidth%; position: absolute; top: calc(190px + $listingrow*375px); left: 26%;'>" .	
+				"<h3>" .  $address . " [" . $apt . "] " .  "</a>" . "<br>Price: $" . $row['price'] . 
+				"<div style = 'position: absolute; left: 53%; top: 85px;' >"  .  $city . ", " . $state . "<br>Room Size: " . $roomsize . 
+				"<br>Pets Allowed: " . $pets . "<br>Smoking Allowed: " . $smoking . "<br>Bathroom Type: " . $bath ."</div>" .
+				"<img src = '../Webpages/imgs/example-real-estate/revelry.png' style = 'height: 270px; width: 50%; position: absolute; left: 0px; bottom: 0px' /> " . 
+				"</h3></div>";
+				
 				$c = 1;
 			}else{
-				echo "<div class = 'tableEntryWhite' style = 'height: 125px;'>" . "<h3>" . "<a href='../cssnhtml/listing.php?id=$id'>". $address . " </a>" . ", " . $city . ", " . $state . "<br><br> Price: $" . $row['price'] . "</h3></div>";
+				echo 
+				"<a href='../cssnhtml/listing.php?id=$id'>". 
+				"<div class = 'tableEntryWhite' style = 'margin-bottom: 25px; box-shadow: 5px 5px 3px #888888; height: $rowheight; width: $rowwidth%; position: absolute; top: calc(190px + $listingrow*375px); left: 62%;'>" . 
+				"<h3>" .  $address . " [" . $apt . "] " .  "</a>" . "<br>Price: $" . $row['price'] . 
+				"<div style = 'position: absolute; left: 53%; top: 85px;' >"  .  $city . ", " . $state . "<br>Room Size: " . $roomsize . 
+				"<br>Pets Allowed: " . $pets . "<br>Smoking Allowed: " . $smoking . "<br>Bathroom Type: " . $bath ."</div>" .
+				"<img src = '../Webpages/imgs/example-real-estate/revelry.png' style = 'height: 270px; width: 50%; position: absolute; left: 0px; bottom: 0px' /> " . 
+				"</h3></div>";
+				$listingrow += 1;
 				$c = 0;
 			}
+
+			
 			
 		}
 	}
