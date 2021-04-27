@@ -93,14 +93,14 @@
 	
 	
 	
-	<div class="tinysearchbarwrap">
+	<div class="tinysearchbarwrap" style = "top: 325px; left: 220px; width: 400px;">
 		
 		<button id='tinyexpandButton' style = "height: 30px;" >More Search Preferences</button>
 		
 		<div id = "homesearchbar" action="../Webpages/ApartmentListings.php" >
-			<input form = "homesearch" type="text" style="float:left; display:inline; width: 22%;" class="searchTerm" placeholder="Milledgeville, Georgia" name="query" />
+			<input form = "homesearch" type="text" style="float:left; display:inline; width: 100%;" class="searchTerm" placeholder="Milledgeville, Georgia" name="query" />
 			
-			<button form = "homesearch" type="submit" style="float:right; display:inline; position:absolute; width: 3%; height: 56px;
+			<button form = "homesearch" type="submit" style="float:right; display:inline; position:absolute; width: 15%; height: 56px;
 			border: 1px solid #b902d1; background: #b902d1; text-align: center; color: #fff; border-radius: 0 5px 5px 0; cursor: pointer; font-size: 20px;" 
 			class="tinysearchButton"><i class="fa fa-search"></i></button>
 			
@@ -113,10 +113,10 @@
 				<!--<br><p>Bathrooms
 				<input type="number" min="1" max="5" value="1" style="float:left; display:inline; width: 50%" name="bath" />-->
 				<p>Max Price
-				<input type="number" min="0" max="1000000" style="float:left; display:inline; width: 10%; margin-right: 10px;" name="price" />
+				<input type="number" min="0" max="1000000" style="float:left; display:inline; width: 23%; margin-right: 10px;" name="price" />
 				<p> Pets
 				
-				<select name="pets" style="float:left; display:inline; width: 10%; margin-right: 10px;" >
+				<select name="pets" style="float:left; display:inline; width: 23%; margin-right: 10px;" >
 				
 					<option Value = "Don't Care">Don't Care</option>
 					<option value = "Yes">Yes</option>
@@ -125,7 +125,7 @@
 				</select>
 				<p> Smoke
 				
-				<select name="smoke" style="float:left; display:inline; width: 10%; margin-right: 10px;" >
+				<select name="smoke" style="float:left; display:inline; width: 23%; margin-right: 10px;" >
 				
 					<option Value = "Don't Care">Don't Care</option>
 					<option value = "Yes">Yes</option>
