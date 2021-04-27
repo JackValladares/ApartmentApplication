@@ -54,7 +54,7 @@
 	
 		<br>
 
-		<span class="password"><a href="#">Forgot  password?</a></span>
+		<span class="password"><a href="forgot_password_request.php">Forgot  password?</a></span>
 		
 		
 		

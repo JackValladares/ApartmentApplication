@@ -5,11 +5,11 @@ body{
   font-family: 'Open Sans', sans-serif;
 }
 
-#search {
-  width: 100%;
+.tinySearch {
+  width: 50%;
   position: relative;
   display: flex;
-  z-index: 0;
+  z-index: 100;
   filter: blur(0px);
   -webkit-filter: blur(0px);
 }
@@ -38,7 +38,7 @@ body{
   color: #b902d1;
 }
 
-.searchButton {
+.tinysearchButton {
   width: 64px;
   height: 56px;
   border: 1px solid #b902d1;
@@ -51,10 +51,9 @@ body{
 }
 
 /*Resize the wrap to see the search bar change!*/
-.searchbarwrap{
-  width: 30%;
+.tinysearchbarwrap{
+  width: 10%;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  left: 2%;
   transform: translate(-50%, -50%);
 }

@@ -10,10 +10,22 @@
 
     function searchProfiles()
     {
-        $name = $_POST['name'];
-        $smoke = $_POST['smoke'];
-        $drink = $_POST['drink'];
-        $party = $_POST['party'];
+        if(isset($_POST['name']))
+        {
+            $name = $_POST['name'];
+        }
+        if(isset($_POST['smoke']))
+        {
+            $smoke = $_POST['smoke'];
+        }
+        if(isset($_POST['drink']))
+        {
+            $drink = $_POST['drink'];
+        }
+        if(isset($_POST['party']))
+        {
+            $party = $_POST['party'];
+        }
 
         $query = "SELECT user_name, smoker, drinker FROM Profile JOIN Account
             ON (Profile.user_id = Account.user_id)";
@@ -38,12 +50,16 @@
             $query .= " WHERE " . implode(' AND ', $conditions);
         }
 
+        $_POST['sqlquery'] = $query;
+        /* TODO: figure out if the following code will be implemented.
+        For now, going to touch base with Jack to see if it's similar to the listing
         $result = $conn->$query;
         if(!$results)
         {
             echo "Query failed";
             die("fatal error on sql query");
         }
+
 
         //attempt to print rows
         $rows = mysqli_num_rows($result);
@@ -72,60 +88,61 @@
         }
         else
             echo 'No results found. Please search something else.';
+        
+        */
     }
 
     function searchListings()
     {
-        $text = $_POST['query'];
-        $bath = $_POST['bath'];
-        $price = $_POST['price'];
-        //$roomsize = $_POST['roomsize'];
-        if(isset($_POST['pets']))
-{
-$pets = (int)$_POST['pets'];
-}
-if(isset($_POST['smoke']))
-{
-$smoke = (int)$_POST['smoke'];
-}
-       
-
+		
+		$conditions = array();
+		
+		if(isset($_GET['query']))
+		{
+			$text = $_GET['query'];
+			$conditions[] = "(address LIKE '%$text%' OR city LIKE '%$text%')";
+		}
+		/*if(isset($_GET['bath']))
+		{
+			$bath = $_GET['bath'];
+			$conditions[] = "bath_type >= '$bath'";
+			
+		}*/
+		
+		if(isset($_GET['price']) && (int)$_GET['price'] > 0)
+		{
+			$price = (int)$_GET['price'];
+			$conditions[] = "price <= $price";
+		}
+		
+		if(isset($_GET['roomsize']))
+		{
+			$roomsize = $_GET['roomsize'];
+			$conditions[] = "room_size <= '$roomsize'";
+		}
+		
+        if(isset($_GET['pets']) && $_GET['pets'] != "Don't Care")
+        {
+			$pets = $_GET['pets'];
+			$conditions[] = "pets_allowed = '$pets'";
+        }
+		
+        if(isset($_GET['smoke']) && $_GET['smoke'] != "Don't Care")
+        {
+			$smoke = $_GET['smoke'];
+			$conditions[] = "smoking_allowed = '$smoke'";
+        }
+		
         $query = "SELECT * FROM Listing";
 
-        $conditions = array();
-
-        if(!empty($text))
-        {
-            $conditions[] = "(address LIKE '%".$query."%' OR city LIKE '%".$query."%')";
-        }
-        if(!empty($bath))
-        {
-            $conditions[] = "bath_type >= '$bath'";
-        }
-        if(!empty($price))
-        {
-            $conditions[] = "price <= '$price'";
-        }
-        if(!empty($roomsize))
-        {
-            $conditions[] = "room_size <= '$roomsize'";
-        }
-        if(!empty($pets))
-        {
-            $conditions[] = "pets_allowed = '$pets'";
-        }
-        if(!empty($smoke))
-        {
-            $conditions[] = "smoking_allowed = '$smoke'";
-        }
-
+        
         if(count($conditions) > 0)
         {
             $query .= " WHERE " . implode(' AND ', $conditions);
         }
 
-        $_POST['sqlquery'] = $query;
-//header("../Webpages/ApartmentListings.php");
+        $query;
+        //header("../Webpages/ApartmentListings.php");
         /* commenting out for testing with Jack's system
         $result = $conn->$query;
         if(!$results)
@@ -158,6 +175,6 @@ $smoke = (int)$_POST['smoke'];
         else
             echo 'No results found. Please search something else.';
         */
-
+		return $query;
     }
 ?>
