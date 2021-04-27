@@ -122,7 +122,7 @@
         return $result; 
     }
 
-    function userLogin($conn, $email, $password){
+    function userLogin($conn, $email, $password, $remember, $hp){
         session_start();
         $query = "SELECT * FROM Account WHERE email = \"$email\" AND passwd = \"$password\";";
         $results = $conn->query($query);
@@ -135,7 +135,15 @@
         if($rows==1){
             $_SESSION['email'] = $email;
             $_SESSION['user_id'] = get_user_id($conn, $email);
-            header("Location: ../Webpages/Profile.php");
+            //set Cookies!!
+            if($remember){
+                setcookie("email", $email, time() + (86400 * 30), "/", 'samesite=strict');
+                setcookie("password", $password, time() + (86400 * 30), "/", 'samesite=strict');
+            }
+            if($hp==0)
+                header("Location: ../Webpages/Profile.php");
+            else
+            header("Location: ../Webpages/Homepage.php");
         }
         else{
             header("Location: LoginPage.php?msg=LoginFailed");
@@ -220,6 +228,53 @@
         array_push($array, $result);
         return $array;
 
+    }
+
+    function getEmailFromID($conn, $id)
+    {
+        $query = "SELECT * from Account WHERE user_id = '$id'";
+        $result = $conn->query($query);
+        $results = $result->fetch_array(MYSQLI_ASSOC);
+        $email = $results['email'];
+        
+        return $email;
+    }
+
+    function getRandomListings($conn)
+    {
+        $query = "SELECT * from Listing";
+        $result = $conn->query($query);
+        $array = array();
+
+        while($row = mysqli_fetch_assoc($result))
+        {
+
+            array_push($array, $row);
+
+        }
+        
+        $max = count($array) -1;
+        $finalArray = array();
+        $numArray = array();
+        while(count($finalArray)!=4)
+        {
+            $randomNum = rand(0, $max);
+            if(in_array($randomNum, $numArray)){
+            }
+            else{
+                array_push($numArray, $randomNum);
+                array_push($finalArray, $array[$randomNum]);
+            }
+        }
+
+
+        return $finalArray;
+    }
+
+    function deleteAccount($conn, $user_id)
+    {
+        $query = "DELETE FROM `Account` WHERE user_id = $user_id";
+        $result = $conn->query($query);
     }
 
 ?>
