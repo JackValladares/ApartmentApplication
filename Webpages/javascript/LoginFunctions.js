@@ -1,6 +1,6 @@
 
 var loginButton;
-var loginInterface 
+var loginInterface; 
 var email;
 var pass;
 var confirmButton;
@@ -14,7 +14,7 @@ window.addEventListener('load', (event) => {
 	
 	loginButton.addEventListener("click", toggleVisibility, false);
 	//confirmButton.addEventListener("click", login, false);
-	console.log('Page is fully loaded');
+	console.log('Login Function Successfully Loaded');
 });
 
 
