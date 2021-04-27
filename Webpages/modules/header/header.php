@@ -26,19 +26,23 @@
 
 		//div with logo
 		echo "<div class=\"header\">";
-			echo "<a href = ../Webpages/homepage.php><img src = \"../Webpages/imgs/ui/logo.png\" id =\"logo\"/></a>";
+
+		echo "<a href=\"Homepage.php\"><img src = \"imgs/ui/logo.png\" id =\"logo\"/></a>";
+
 		echo "</div>";
 	
 		echo "<br>";
 	
 	
 		//Button that opens and closes login box
-		echo "<div class = \"buttonHolder\">";
+		if(!(isset($_SESSION['user_id'])))
+		{
+			echo "<div class = \"buttonHolder\">";
 			echo "<button id=\"loginButton\"> <img src = \"../Webpages/imgs/ui/buttons/login.png\"  id=\"loginPNG\" \"/> </button>";
 		echo "</div>";
 	
 		//login form
-		echo "<form action=\"loginphp.php\ method=\"POST\">";
+		echo "<form action=\"../cssnhtml/loginphp.php\" method=\"POST\">";
 			
 			//image
 			echo "<div class=\"imgcontainer\">";
@@ -77,20 +81,26 @@
 				//forgot password link
 				echo "<span class=\"password\"><a href=\"#\">Forgot password?</a></span>";
 				//create account link
-				echo "<span class=\"createaccount\"><a href=\"../cssnhtml/profile_questionnaire.php\"><br>Create Account</a></span>";
+				echo "<span class=\"createaccount\"><a href=\"../cssnhtml/accountCreation.php\"><br>Create Account</a></span>";
 
 
 			echo "</div>";
 		echo "</form>";
+		}
+		else
+		{
+			echo "<div class = \"buttonHolder\">";
+			//echo "<button id=\"loginButton\"> <img src = \"../Webpages/imgs/ui/buttons/login.png\"  id=\"loginPNG\" \"/ onclick = \"header(\"Location: Profile.php\")\"> </button>";
+			echo "<a href=\"Profile.php\" id = \"loginButton\"><img id = \"loginPNG\"src = \"../Webpages/imgs/ui/buttons/login.png\" id =\"logo\"></a>";
+		echo "</div>";
+		echo "</div>";
+		echo "</form>";
 
-<<<<<<< HEAD
 
 		
 		}
 
 		
-=======
->>>>>>> 841168f3c7efeda063e462212a2cd20f0e4f5504
 		
 		
 		
