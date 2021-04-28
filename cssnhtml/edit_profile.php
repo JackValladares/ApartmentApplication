@@ -210,5 +210,12 @@ _END;
                 ?>
 			</ul>
 		</form>
+
+        <form action = " " method = "post" enctype="multipart/form-data">
+        <p>
+        File: <input type="file" name="upload">
+        </p>
+        <input type="submit" value="Upload">
+        </form>
 	</body>
 </html>
