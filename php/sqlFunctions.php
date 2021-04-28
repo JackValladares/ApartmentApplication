@@ -275,6 +275,10 @@
     {
         $query = "DELETE FROM `Account` WHERE user_id = $user_id";
         $result = $conn->query($query);
+        if(!$result)
+        {
+            header("Location: deleteNotWork.php");
+        }
     }
 
 ?>

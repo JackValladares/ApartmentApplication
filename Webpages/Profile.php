@@ -40,9 +40,6 @@
 		
 		echo "<a href = \"mailto: $user\" style = \"font-size: 20px\">$user</a>";
 		?>
-		<div class = "locationform" style = "width: 500px; flex-direction: row;">
-			<h3>College: Georgia College and State University </h3><button style = "height: 30px;"> Change School </button>
-		</div>
 		<br>
 		<h2>My tags</h2>
 		<?php
@@ -109,9 +106,12 @@
 
 	</div>
 
+	<br>
 	<input type = "button" onclick = "parent.location = '../cssnhtml/listing_creation_info_page.php'" value = "Create Listing">
 	<input type = "button" onclick = "parent.location = '../cssnhtml/edit_profile.php'" value = 'Edit Profile'>
+	<br> <br>
 	<input type = "button" onclick = "parent.location = '../cssnhtml/logout.php'" value = 'Log Out'>
+	<input type = "button" onclick = "parent.location = '../cssnhtml/deleteAccount.php'" value = 'Delete my Account'>
 	
 	
 	
