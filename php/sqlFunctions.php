@@ -146,7 +146,7 @@
             header("Location: ../Webpages/Homepage.php");
         }
         else{
-            header("Location: LoginPage.php?msg=LoginFailed");
+            header("Location: ../Webpages/Homepage.php?msg=LoginFailed");
         }
 
     }

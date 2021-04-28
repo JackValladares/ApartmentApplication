@@ -10,6 +10,11 @@
 		$goToHomePage = 1;
 		userLogin($conn, $email, $password, $remember, $goToHomePage);
 	}
+
+	if(isset($_GET['msg']))
+	{
+		echo "<script>alert(\"Login Failed. Try Again\")</script>";
+	}
 ?>
 
 <html>
