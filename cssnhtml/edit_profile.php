@@ -18,6 +18,7 @@
             require_once("../php/sqlFunctions.php");
             $conn = connectDB();
             $user_id = $_GET['user_id'];
+            echo "$user_id";
             $results = get_profile_data($conn, $user_id);
 
             if(isset($_SESSION['f_name'])){
@@ -211,11 +212,12 @@ _END;
 			</ul>
 		</form>
 
-        <form action = " " method = "post" enctype="multipart/form-data">
+        <form action = "profile_pic_update.php" method = "post" enctype="multipart/form-data">
         <p>
         File: <input type="file" name="upload">
         </p>
         <input type="submit" value="Upload">
+        <input type = "hidden" id = "userid" name = "userid" value = "<?php echo "$userid";?>">
         </form>
 	</body>
 </html>
