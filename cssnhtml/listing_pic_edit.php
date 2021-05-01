@@ -1,4 +1,7 @@
-<?php session_start() ?>
+<?php 
+session_start();
+require_once "../php/sqlFunctions.php";
+?>
 
 <!DOCTYPE html>
 <html>
@@ -37,6 +40,21 @@
                     <input type="file" name="image" id="image" /></p><br />
                     <input type="hidden" name="action" id="action" value="insert" />
                     <input type="hidden" name="image_id" id="image_id" />
+                    <label for="listing_name">Listing Name</label>
+                    <select name="listing_name" id="listing_name" form="image_form">
+                    <?php
+                    $conn = connectDB();
+                    $userid = $_SESSION['user_id'];
+                    $query = "SELECT listing_id FROM listing WHERE user_id = '$userid'";
+                    $result = $conn->query($query);
+                    while($row = $result->fetch_assoc())
+                    {
+                        unset($listing_id);
+                        $id = $row['listing_id'];
+                        echo '<option value="'.$id.'">'.$id.'</option>';
+                    }
+                    ?>
+                    </select>
                     <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-info" />
                 </form>
             </div>
@@ -115,7 +133,7 @@ $(document).ready(function(){
         if(confirm("Are you sure you want to delete this image for your listing?"))
         {
             $.ajax({
-                url:"listing_images_actions.php",
+                url:"listing_image_actions.php",
                 method:"POST",
                 data:{image_id:image_id, action:action},
                 success:function(data)

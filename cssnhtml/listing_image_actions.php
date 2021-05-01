@@ -29,21 +29,20 @@ if(isset($_POST['action']))
         $output = '
         <table class="table table-bordered table-striped">  
             <tr>
-                <th width="10%">ID</th>
+                <th width="10%">Listing ID</th>
                 <th width="70%">Image</th>
-                <th width="10%">Change</th>
-                <th width="10%">Remove</th>
+                <th width="20%">Remove</th>
             </tr>
         ';
         while($row = mysqli_fetch_array($result))
         {
             $output .= '
             <tr>
-            <td>'.$row["id"].'</td>
+            <td>'.$row["listing_id"].'</td>
             <td>
-                <img src="data:image/jpeg;base64,'.base64_encode($row['name'] ).'" height="60" width="75" class="img-thumbnail" />
+                <img src="data:image/jpeg;base64,'.base64_encode($row['listing_image'] ).'" height="60" width="75" class="img-thumbnail" />
             </td>
-            <td><button type="button" name="delete" class="btn btn-danger bt-xs delete" id="'.$row["id"].'">Remove</button></td>
+            <td><button type="button" name="delete" class="btn btn-danger bt-xs delete" id="'.$row["image_id"].'">Remove</button></td>
             </tr>
             ';
         }
@@ -54,6 +53,7 @@ if(isset($_POST['action']))
     //insert passed image
     if($_POST['action'] == "insert")
     {
+        $listingid = $_POST['listing_name'];
         $file = addslashes(file_get_contents($_FILES['image']['tmp_name']));
         $query = "INSERT INTO listingimages (listing_image, listing_id) VALUES ('$file', '$listingid')";
         $result = $conn->query($query);
@@ -70,7 +70,7 @@ if(isset($_POST['action']))
     //delete passed row
     if($_POST['action'] == "delete")
     {
-        $query = "DELETE FROM listingimages WHERE id = '".$_POST['image_id']."'";
+        $query = "DELETE FROM listingimages WHERE image_id = '".$_POST['image_id']."'";
         $result = $conn->query($query);
         if(!$result)
         {
