@@ -31,7 +31,7 @@
 	</div>
 
 	<input type = "button" onclick = "parent.location = '../cssnhtml/listing_creation_info_page.php'" value = "Create Listing">
-	<input type = "button" onclick = "parent.location = '../cssnhtml/edit_profile.php?user_id=$user_id'" value = 'Edit Profile'>
+	<input type = "button" onclick = "parent.location = '../cssnhtml/edit_profile.php'" value = 'Edit Profile'>
 	<input type = "button" onclick = "parent.location = '../cssnhtml/logout.php'" value = 'Log Out'>
 	<input type = "button" onclick = "parent.location = '../cssnhtml/deleteAccount.php'" value = 'Delete Account'>
 

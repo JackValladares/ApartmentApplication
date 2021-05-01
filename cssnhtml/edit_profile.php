@@ -17,7 +17,8 @@
 
             require_once("../php/sqlFunctions.php");
             $conn = connectDB();
-            $user_id = $_GET['user_id'];
+            $user_id = get_user_id($conn, $_SESSION['email']);
+            $_SESSION['user_id'] = $user_id;
             echo "$user_id";
             $results = get_profile_data($conn, $user_id);
 
