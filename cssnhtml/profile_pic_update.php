@@ -20,7 +20,6 @@ if(isset($_FILES['upload']))
         $result = $conn->query($checkQuery);
         if(mysqli_num_rows($result) == 1) //change profile picture
         {
-            echo $target_dir.$name;
             $query = "UPDATE ProfileImages SET profile_image = '$imgData' WHERE profile_id = '$userid'";
         }
         else //add profile picture
@@ -32,12 +31,11 @@ if(isset($_FILES['upload']))
         $result = $conn->query($query);
         if(!$result)
         {
-            echo "$conn->error";
+            header("location:edit_profile.php?msg=Failure");
         }
         else
         {
-            echo "<p style='color:green'>File uploaded!</p>";
-            header("location:edit_profile.php");
+            header("location:edit_profile.php?msg=Success");
         }
     }
 }

@@ -3,6 +3,17 @@
     {
       die("Please Login First!");
     }
+    if(isset($_GET['msg']))
+    {
+        if($_GET['msg'] == "Success")
+        {
+            echo "<p style='color:green'>File uploaded!</p>";
+        }
+        else
+        {
+            echo "<p style='color:red'>Error uploading file</p>";
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +30,6 @@
             $conn = connectDB();
             $user_id = get_user_id($conn, $_SESSION['email']);
             $_SESSION['user_id'] = $user_id;
-            echo "$user_id";
             $results = get_profile_data($conn, $user_id);
 
             if(isset($_SESSION['f_name'])){
