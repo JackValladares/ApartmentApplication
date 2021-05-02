@@ -1,7 +1,3 @@
-<!--TODO:
-    -Figure out how $results data is stored and if it can be compared to string password.
-    !-->
-
 <?php
     //function to connect to a database and return a connection
 	function connectDB()
@@ -186,6 +182,14 @@
         return $my_array;
         
 
+
+    }
+
+    function get_profile_pic($conn, $profileid)
+    {
+        $query = "SELECT profile_image FROM profileimages WHERE profile_id = '$profileid'";
+        $result = $conn->query($query);
+        $pic = $result->fetch_array(MYSQLI_ASSOC);
 
     }
 

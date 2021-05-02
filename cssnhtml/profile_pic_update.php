@@ -37,6 +37,7 @@ if(isset($_FILES['upload']))
         else
         {
             echo "<p style='color:green'>File uploaded!</p>";
+            header("location:edit_profile.php");
         }
     }
 }

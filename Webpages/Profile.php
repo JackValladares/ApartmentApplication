@@ -4,7 +4,7 @@
 
 	<link rel="stylesheet" href="css/stylesheet.css" />
 	<link rel="stylesheet" href="css/profile.css" />
-	<script type = "text/javascript" src="LoginFunctions.js"></script>
+	<script type = "text/javascript" src="javascript/LoginFunctions.js"></script>
 
 </head>
 
@@ -12,8 +12,7 @@
 <body style = "background-color: #fafafa">
 
 	<?php include 'modules/header/header.php'; ?>
-	
-	<div class="profile-img" style="background-image: url('imgs/example-profile/jack.jpeg');"></div>
+	<div class="profile-img" style="background-image: url('../cssnhtml/get_profile_pic.php');"></div>
 	<div class="profile-info">
 		<h1>Jack Valladares</h1>
 		<a href = "mailto: jackvalladares@gmail.com" style = "font-size: 20px">jackvalladares@gmail.com</a>
