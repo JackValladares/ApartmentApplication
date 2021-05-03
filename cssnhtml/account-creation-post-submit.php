@@ -26,7 +26,7 @@
 				$query = "INSERT INTO Profile (user_id)
 				 VALUES ('$user_id')";
 				insert_profile($conn,$query);
-				header("Location: index.php");
+				header("Location: ../webpages/homepage.php");
 			}
 
 ?>

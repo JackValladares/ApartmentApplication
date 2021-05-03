@@ -1,13 +1,14 @@
 <?php 
 
-require_once("./php/sqlFunctions.php");
+require_once("../php/sqlFunctions.php");
 $conn = connectDB();
-$email = $_SESSION['email'];
 session_start();
-    session_destroy();
     setcookie("email", "", time() - 3600);
     setcookie("password", "", time() - 3600);
-$userID = get_user_id($conn, $email);
+$email = $_SESSION['email'];
+$userID = $_SESSION['user_id'];
+session_destroy();
+echo "UserID:" . $userID;
 deleteAccount($conn, $userID);
 header("Location: ../webpages/homepage.php");
 
