@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS ProfileImages (
 
 CREATE TABLE IF NOT EXISTS ListingImages (
     image_id            INT     AUTO_INCREMENT PRIMARY KEY,
-    listing_image       BLOB,
+    listing_image       MEDIUMBLOB,
     listing_id          INT,
 
     FOREIGN KEY (listing_id) REFERENCES Listing(listing_id) ON DELETE CASCADE ON UPDATE CASCADE
