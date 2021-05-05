@@ -104,6 +104,10 @@
                     <textarea name = "bioVal" rows = 6></textarea>
                 </li>
 
+                
+                    Select a Profile Picture
+                    <input type="file" name="files[]" single >
+
                 <li>
                     <input type="submit" id="submit-button" value="Create Account">
                 </li>

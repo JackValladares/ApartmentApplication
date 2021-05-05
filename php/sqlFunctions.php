@@ -142,7 +142,7 @@
             header("Location: ../Webpages/Homepage.php");
         }
         else{
-            header("Location: LoginPage.php?msg=LoginFailed");
+            header("Location: ../Webpages/Homepage.php?msg=LoginFailed");
         }
 
     }
@@ -277,7 +277,8 @@
 
     function deleteAccount($conn, $user_id)
     {
-        $query = "DELETE FROM `Account` WHERE user_id = $user_id";
+        //works with a hard coded value but having problems with variable
+        $query = "DELETE FROM `Account` WHERE user_id = '$user_id'";
         $result = $conn->query($query);
     }
 
