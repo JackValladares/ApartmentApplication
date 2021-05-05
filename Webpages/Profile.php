@@ -5,7 +5,7 @@
 
 	<link rel="stylesheet" href="css/stylesheet.css" />
 	<link rel="stylesheet" href="css/profile.css" />
-	<script type = "text/javascript" src="../Webpages/javascript/LoginFunctions.js"></script>
+	<script type = "text/javascript" src="javascript/LoginFunctions.js"></script>
 	<style type="text/css">
 			table {
 				border-collapse: collapse;
@@ -24,14 +24,13 @@
 
 <body style = "background-color: #fafafa">
 
-	<?php include 'modules/header/header.php';
+	<?php include 'modules/header/header.php'; ?>
+	<div class="profile-img" style="background-image: url('../cssnhtml/get_profile_pic.php');"></div>
 	require_once("../php/sqlFunctions.php");
 	$user = $_SESSION['email'];
 	$conn = connectDB();
 	$user_id = get_user_id($conn, $user);
 	$array = get_profile_data($conn, $user_id); ?>
-	
-	<div class="profile-img" style="background-image: url('imgs/example-profile/jack.jpeg');"></div>
 	<div class="profile-info">
 	<?php
 		$fName = $array['fName'];
