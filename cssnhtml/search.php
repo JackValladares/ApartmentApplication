@@ -10,39 +10,31 @@
 
     function searchProfiles()
     {
-        if(isset($_POST['name']))
-        {
-            $name = $_POST['name'];
-        }
-        if(isset($_POST['smoke']))
-        {
-            $smoke = $_POST['smoke'];
-        }
-        if(isset($_POST['drink']))
-        {
-            $drink = $_POST['drink'];
-        }
-        if(isset($_POST['party']))
-        {
-            $party = $_POST['party'];
-        }
 
-        $query = "SELECT user_name, smoker, drinker FROM Profile JOIN Account
+        $drinkQuery = $_GET['field1'];
+        $smokeQuery = $_GET['field2'];
+
+        $query = "SELECT * FROM Profile JOIN Account
             ON (Profile.user_id = Account.user_id)";
 
         $conditions = array();
 
-        if(!empty($name))
+        if(isset($_GET['query']))
         {
-            $conditions[] = "user_name LIKE '%".$name."%'";
+            $text = $_GET['query'];
+            $conditions[] = "(email LIKE '%$text%' OR user_name LIKE '%$text%')";
         }
-        if(!empty($smoke))
+
+        if(isset($drinkQuery) && $drinkQuery != "Don't Care")
         {
-            $conditions[] = "smoker = '$smoke'";
+            $drinker = $drinkQuery;
+            $conditions[] = "drinker = '$drinker'";
         }
-        if(!empty($drink))
+
+        if(isset($smokeQuery) && $smokeQuery != "Don't Care")
         {
-            $conditions[] = "drinker = '$drink'";
+            $smoker = $smokeQuery;
+            $conditions[] = "smoker = '$smoker'";
         }
 
         if(count($conditions) > 0)
@@ -50,51 +42,16 @@
             $query .= " WHERE " . implode(' AND ', $conditions);
         }
 
-        $_POST['sqlquery'] = $query;
-        /* TODO: figure out if the following code will be implemented.
-        For now, going to touch base with Jack to see if it's similar to the listing
-        $result = $conn->$query;
-        if(!$results)
-        {
-            echo "Query failed";
-            die("fatal error on sql query");
-        }
 
+        return $query;
 
-        //attempt to print rows
-        $rows = mysqli_num_rows($result);
-        if ($rows > 0)
-        {
-            // display search result count to user
-            echo '<br /><div class="right"><b><u>'.$rows.'</u></b> results found</div>';
-
-            echo '<table class="search">';
-
-            // display all the search results to the user
-            while ($row = mysqli_fetch_assoc($result))
-            {    
-                echo '<tr>
-                    <td><h3><a href="'.$row['user_name'].'</a></h3></td>
-                </tr>
-                <tr>
-                    <td>'.$row['smoker'].'</td>
-                </tr>
-                <tr>
-                    <td><i>'.$row['drinker'].'</i></td>
-                </tr>';
-            }
-
-            echo '</table>';
-        }
-        else
-            echo 'No results found. Please search something else.';
-        
-        */
     }
 
     function searchListings()
     {
-		
+		$petsQuery = $_GET['field1'];
+		$smokeQuery = $_GET['field2'];
+        $priceQuery = $_GET['field3'];
 		$conditions = array();
 		
 		if(isset($_GET['query']))
@@ -109,9 +66,9 @@
 			
 		}*/
 		
-		if(isset($_GET['price']) && (int)$_GET['price'] > 0)
+		if(isset($priceQuery) && (int)$priceQuery > 0)
 		{
-			$price = (int)$_GET['price'];
+			$price = (int)$priceQuery;
 			$conditions[] = "price <= $price";
 		}
 		
@@ -121,15 +78,15 @@
 			$conditions[] = "room_size <= '$roomsize'";
 		}
 		
-        if(isset($_GET['pets']) && $_GET['pets'] != "Don't Care")
+        if(isset($petsQuery) && $petsQuery != "Don't Care")
         {
-			$pets = $_GET['pets'];
+			$pets = $petsQuery;
 			$conditions[] = "pets_allowed = '$pets'";
         }
 		
-        if(isset($_GET['smoke']) && $_GET['smoke'] != "Don't Care")
+        if(isset($smokeQuery) && $smokeQuery != "Don't Care")
         {
-			$smoke = $_GET['smoke'];
+			$smoke = $smokeQuery;
 			$conditions[] = "smoking_allowed = '$smoke'";
         }
 		
@@ -142,39 +99,7 @@
         }
 
         $query;
-        //header("../Webpages/ApartmentListings.php");
-        /* commenting out for testing with Jack's system
-        $result = $conn->$query;
-        if(!$results)
-        {
-            echo "Query failed";
-            die("fatal error on sql query");
-        }
-        //attempt to print rows
-        $rows = mysqli_num_rows($result);
-        if ($rows > 0)
-        {
-            // display search result count to user
-            echo '<br /><div class="right"><b><u>'.$rows.'</u></b> results found</div>';
-            echo '<table class="search">';
-            // display all the search results to the user
-            while ($row = mysqli_fetch_assoc($result))
-            {    
-                echo '<tr>
-                    <td>'.$row['address'].'</td>
-                </tr>
-                <tr>
-                    <td>'.$row['smoker'].'</td>
-                </tr>
-                <tr>
-                    <td><i>'.$row['drinker'].'</i></td>
-                </tr>';
-            }
-            echo '</table>';
-        }
-        else
-            echo 'No results found. Please search something else.';
-        */
+
 		return $query;
     }
 ?>
