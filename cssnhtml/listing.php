@@ -28,14 +28,15 @@ include '../Webpages/modules/header/header.php';
         $listingID = $_GET['id'];
         $conn = connectDB();
 
-        $userID = $_GET['id'];
+        $arr = get_listing_data($conn, $listingID);
+        $userID = $arr['seller'];
 
         $user = get_profile_data(connectDB(), $userID);
         $seller = $user['fName'] . " " . $user['lName'];
 
 
 
-        $arr = get_listing_data($conn, $listingID);
+
 
 
         echo "<div class = 'tableEntryPurple' style = 'height: 500px; width: 400px; margin-left: 50px;'>" .
@@ -98,7 +99,7 @@ function userListing()
     $drinker = $user['drinker'];
     $paragraph = $user['bio'];
 
-    $profilePic = get_profile_pic(connectDB(), $userID);
+    //$profilePic = get_profile_pic(connectDB(), $userID);
 
     echo "<div class = 'tableEntryBlue' style = 'height: 500px; width: 400px; margin-left: 50px;'>" .
     "<h1 style = 'margin-left: 35px; margin-right: 35px;'>" . $name .  "</h1>" .
