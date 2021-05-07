@@ -10,17 +10,30 @@ var field1, label1;
 var field2, label2;
 var field3, label3;
 var field4;
+var flavorText;
+var submitButton;
+var logo;
 
 
-window.addEventListener('load', (event) => {	
 
+
+console.log();
+
+window.addEventListener('load', (event) => {
+
+
+	flavorText = document.getElementById("subtitle");
 	searchButton = document.getElementById("homesearchbar")
 	expandButton = document.getElementById("expandButton");
+	submitButton = document.getElementById("searchButton");
 	toggleButton = document.getElementById("toggleSearch");
 	theButton = document.getElementById("theButton");
 	searchInterface = document.getElementById("search");;
 	searchBar = document.getElementById("searchBar");
+	logo = document.getElementById("logo");
 	searchBar.placeholder = "Milledgeville, Georgia";
+
+
 
 	field1 = document.getElementById("field1");
 	field2 = document.getElementById("field2");
@@ -35,6 +48,7 @@ window.addEventListener('load', (event) => {
 	expandButton.addEventListener("click", toggleSearchVisibility, false);
 	toggleButton.addEventListener("click", toggleSearchType, false);
 	console.log('Search Function Successfully Loaded');
+
 });
 
 
@@ -92,6 +106,18 @@ function toggleSearchType()
 		searchBar.placeholder = "John Doe";
 		searchButton.action = "../Webpages/Listings.php?type=profiles";
 
+		flavorText.innerHTML = "Start searching for your perfect roommate now";
+		flavorText.style.color = "var(--richBlue)";
+		searchBar.style.borderColor = "var(--richBlue)";
+
+		flavorText.style.color = "var(--richBlue)";
+		searchBar.style.borderColor = "var(--richBlue)";
+
+		submitButton.style.color = "var(--richBlue)";
+		submitButton.style.borderColor = "var(--richBlue)";
+		submitButton.style.backgroundColor = "var(--richBlue)";
+		logo.src = "../Webpages/imgs/ui/BlueLogo.png";
+
 		toggleButton.textContent = "Search for Listings";
 
 
@@ -117,6 +143,17 @@ function toggleSearchType()
 		field4.value = (type = "listings");
 		searchBar.placeholder = "Milledgeville, Georgia";
 		searchButton.action = "../Webpages/Listings.php?type=listings";
+
+
+		flavorText.innerHTML = "Start searching for your perfect home now";
+		flavorText.style.color = "var(--richPurple)";
+		searchBar.style.borderColor = "var(--richPurple)";
+
+		submitButton.style.color = "var(--richPurple)";
+		submitButton.style.borderColor = "var(--richPurple)";
+		submitButton.style.backgroundColor = "var(--richPurple)";
+
+		logo.src = "../Webpages/imgs/ui/Logo.png";
 
 		toggleButton.textContent = "Search for Users";
 

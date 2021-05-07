@@ -10,14 +10,21 @@ var field1T, label1T;
 var field2T, label2T;
 var field3T, label3T;
 var field4T;
+var submitButtonT;
+var get, get2, type;
 
-window.addEventListener('load', (event) => {	
+window.addEventListener('load', (event) => {
+
+
+
+
 	expandButtonT = document.getElementById("tinyexpandButton");
 	theButtonT = document.getElementById("theButton");
 	searchInterfaceT = document.getElementById("tinySearch");
 	toggleButtonT = document.getElementById("tinytoggleSearch");
 	searchBarT = document.getElementById("searchBarT");
 	searchButtonT = document.getElementById("homesearch");
+	submitButtonT = document.getElementById("tinysearchButton");
 
 	field1T = document.getElementById("field1T");
 	field2T = document.getElementById("field2T");
@@ -32,6 +39,21 @@ window.addEventListener('load', (event) => {
 	toggleButtonT.addEventListener("click", toggleTinySearchType, false);
 	//theButton.addEventListener("click", login, false);
 	console.log('Search Function Successfully Loaded');
+
+
+	get = window.location.search.substr(1);
+
+	type = get.split("&");
+
+	console.log(type);
+	type = type[4];
+
+	if(type === "type=profiles")
+	{
+		toggleTinySearchType();
+	}
+
+
 });
 
 
@@ -107,6 +129,15 @@ function toggleTinySearchType()
 
 		toggleButtonT.textContent = "Search for Listings";
 
+		searchBarT.style.borderColor = "var(--richBlue)";
+
+		logo.src = "../Webpages/imgs/ui/BlueLogo.png";
+
+		submitButtonT.style.color = "var(--richBlue)";
+		submitButtonT.style.borderColor = "var(--richBlue)";
+		submitButtonT.style.backgroundColor = "var(--richBlue)";
+
+
 
 		if(searchInterfaceT.style.visibility === "visible")
 		{
@@ -132,6 +163,15 @@ function toggleTinySearchType()
 		searchButtonT.action = "../Webpages/Listings.php?type=listings";
 
 		toggleButtonT.textContent = "Search for Users";
+
+		searchBarT.style.borderColor = "var(--richPurple)";
+
+		submitButtonT.style.color = "var(--richPurple)";
+		submitButtonT.style.borderColor = "var(--richPurple)";
+		submitButtonT.style.backgroundColor = "var(--richPurple)";
+
+		logo.src = "../Webpages/imgs/ui/Logo.png";
+
 
 		if(searchInterfaceT.style.visibility === "visible")
 		{

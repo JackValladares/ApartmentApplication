@@ -1,4 +1,3 @@
-
 var loginButton;
 var loginInterface; 
 var email;
