@@ -190,7 +190,7 @@
         $query = "SELECT profile_image FROM profileimages WHERE profile_id = '$profileid'";
         $result = $conn->query($query);
         $pic = $result->fetch_array(MYSQLI_ASSOC);
-
+        return $pic['profile_image'];
     }
 
     function get_listing_data($conn, $listing_id)
@@ -217,6 +217,7 @@
         $my_array['pets_allowed'] = $results['pets_allowed'];
         $my_array['smoking_allowed'] = $results['smoking_allowed'];
         $my_array['misc_info'] = $results['misc_info'];
+        $my_array['seller'] = $results['user_id'];
 
         return $my_array;
     }

@@ -11,9 +11,10 @@
 
 
 <body style = "background-color: #fafafa">
-	
+
 	<?php include 'modules/header/header.php'; ?>
-	
+
+
 	<?php 
 	
 	
@@ -24,18 +25,21 @@
 
 
 
-
     $searchType = $_GET['type'];
 	if($searchType == "listings")
     {
         $query = searchListings();
         $results = $conn->query($query);
+
         apartmentSearch($results);
 
     }else{
+
+
         $query = searchProfiles();
         $results = $conn->query($query);
         profileSearch($results);
+
 
     }
 
@@ -94,7 +98,7 @@
                 {
 
                     echo
-                        "<a href='../cssnhtml/listing.php?id=$id'>".
+                        "<a href='../cssnhtml/listing.php?id=$id&type=listing'>".
                         "<div class = 'tableEntryPurple' style = 'height: $rowheight; box-shadow: 5px 5px 3px #888888; width: $rowwidth%; position: absolute; top: calc(190px + $listingrow*375px); left: 26%;'>" .
                         "<h3>" .  $address . " [" . $apt . "] " .  "</a>" . "<br>Price: $" . $row['price'] .
                         "<div style = 'position: absolute; left: 53%; top: 85px;' >"  .  $city . ", " . $state . "<br>Room Size: " . $roomsize .
@@ -103,7 +107,7 @@
                         "</h3></div>";
                 }else{
                     echo
-                        "<a href='../cssnhtml/listing.php?id=$id'>".
+                        "<a href='../cssnhtml/listing.php?id=$id&type=listing'>".
                         "<div class = 'tableEntryWhite". $c . "' style = 'z-index: -1; margin-bottom: 25px; box-shadow: 5px 5px 3px #888888; height: $rowheight; width: $rowwidth%; position: absolute; top: calc(190px + $listingrow*375px); left: 62%;'>" .
                         "<h3>" .  $address . " [" . $apt . "] " .  "</a>" . "<br>Price: $" . $row['price'] .
                         "<div style = 'position: absolute; left: 53%; top: 85px;' >"  .  $city . ", " . $state . "<br>Room Size: " . $roomsize .
@@ -153,7 +157,9 @@
         $id = $row['profile_id'];
 
         $d1 = new DateTime($row['dob']);
-        $d2 = new DateTime(strtotime(time()));
+
+        $now = date('m-d-Y H:i:s');
+        $d2 = DateTime::createFromFormat('m-d-Y H:i:s', $now);
         $age = $d2->diff($d1);
 
         $name = $row['user_name'];
@@ -171,8 +177,8 @@
         {
 
             echo
-                "<a href='../cssnhtml/listing.php?id=$id'>".
-                "<div class = 'tableEntryPurple' style = 'height: $rowheight; box-shadow: 5px 5px 3px #888888; width: $rowwidth%; position: absolute; top: calc(190px + $listingrow*375px); left: 26%;'>" .
+                "<a href='../cssnhtml/listing.php?id=". $id ."&type=user'>".
+                "<div class = 'tableEntryBlue' style = 'height: $rowheight; box-shadow: 5px 5px 3px #888888; width: $rowwidth%; position: absolute; top: calc(190px + $listingrow*375px); left: 26%;'>" .
                 "<h3>" .  $name . " [" . $age->y . " years old] " .  "</a>" .
                 "<div style = 'position: absolute; left: 53%; top: 85px;' > Smokes:"  .  $smoker . "<br>Drinks: " . $drinker .
                 "<br>BedTime: " . $bedtime . "<br>Cleaning Schedule: " . $cleaning . "<h5>" . $paragraph ."</h5></div>" .
@@ -180,7 +186,7 @@
                 "</div></h3>";
         }else{
             echo
-                "<a href='../cssnhtml/listing.php?id=$id'>".
+                "<a href='../cssnhtml/listing.php?id=". $id ."&type=user'>".
                 "<div class = 'tableEntryWhite". $c . "' style = 'z-index: -1; margin-bottom: 25px; box-shadow: 5px 5px 3px #888888; height: $rowheight; width: $rowwidth%; position: absolute; top: calc(190px + $listingrow*375px); left: 62%;'>" .
                 "<h3>" .  $name . " [" . $age->y . " years old] " .  "</a>" .
                 "<div style = 'position: absolute; left: 53%; top: 85px;' > Smokes:"  .  $smoker . "<br>Drinks: " . $drinker .
@@ -212,7 +218,7 @@
 			
 			<button form = "homesearch" type="submit" style="float:right; display:inline; position:absolute; width: 15%; height: 56px;
 			border: 1px solid #b902d1; background: #b902d1; text-align: center; color: #fff; border-radius: 0 5px 5px 0; cursor: pointer; font-size: 20px;" 
-			class="tinysearchButton"><i class="fa fa-search"></i></button>
+			class="tinysearchButton" id = "tinysearchButton"><i class="fa fa-search"></i></button>
 			
 		</div>
 		

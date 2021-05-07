@@ -1,3 +1,10 @@
+:root {
+	--lightPurple: #fee3ff;
+	--lightBlue: #e6f4ff;
+	--richPurple: #b902d1;
+	--richBlue: #007bff;
+}
+
 html, body {
 	margin: 0;
 	padding: 0;
@@ -7,7 +14,15 @@ html, body {
 .tableEntryPurple {
 	padding:5px;
 	height: 50px;
-	background: #fee3ff;
+	background: var(--lightPurple);
+	width: 100%;
+	box-shadow: 5px 5px 3px #888888;
+}
+
+.tableEntryBlue {
+	padding:5px;
+	height: 50px;
+	background: var(--lightBlue);
 	width: 100%;
 	box-shadow: 5px 5px 3px #888888;
 }

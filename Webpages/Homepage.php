@@ -41,14 +41,14 @@
 	</div>
 	
 	<div class="searchbarwrap">
-		<h2 class = "subtitle">Start searching for your perfect home now</h2>
+		<h2 class = "subtitle" id = "subtitle">Start searching for your perfect home now</h2>
 		
 		<button id='expandButton' style = "height: 30px;" >More Search Preferences</button>
         <button id='toggleSearch' style = "height: 30px;" >Search for Users</button>
 		
 		<div id = "homesearchbar" action="../Webpages/ApartmentListings.php" >
 			<input form = "homesearch" type="text" style="float:left; display:inline; width: 90%;" class="searchTerm" id = "searchBar" name="query" />
-			<button form = "homesearch" type="submit" style="float:right; display:inline; position:absolute; width: 10%;" class="searchButton"><i class="fa fa-search"></i></button>
+			<button form = "homesearch" type="submit" style="float:right; display:inline; position:absolute; width: 10%;" class="searchButton" id = "searchButton"><i class="fa fa-search"></i></button>
 		</div>
 		
 		<div id="search" style="visibility: hidden; display: inline-block;">
