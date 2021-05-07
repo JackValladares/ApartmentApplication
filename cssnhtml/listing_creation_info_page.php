@@ -26,7 +26,9 @@
                 </li>
                 <li>
                     <label for "apptNum" id = "apptNumLabel">Apartment Number:</label>
-                    <input type = "number" name = "apptNum" id = "apptNum">
+
+                    <input type = "number" name = "aptNum" id = "aptNum">
+
                 </li>
                 <li>
                     <label for "roomSize" id = "roomSizeLabel">Room Size:</label>

@@ -5,7 +5,7 @@
 
 	<link rel="stylesheet" href="css/stylesheet.css" />
 	<link rel="stylesheet" href="css/profile.css" />
-	<script type = "text/javascript" src="javascript/LoginFunctions.js"></script>
+	<script type = "text/javascript" src="../Webpages/javascript/LoginFunctions.js"></script>
 	<style type="text/css">
 			table {
 				border-collapse: collapse;
@@ -24,13 +24,14 @@
 
 <body style = "background-color: #fafafa">
 
-	<?php include 'modules/header/header.php'; ?>
-	<div class="profile-img" style="background-image: url('../cssnhtml/get_profile_pic.php');"></div>
+	<?php include 'modules/header/header.php';
 	require_once("../php/sqlFunctions.php");
-	$user = $_SESSION['email'];
 	$conn = connectDB();
-	$user_id = get_user_id($conn, $user);
+	$user_id = $_GET['id'];
+    $user = getEmailFromID($conn, $user_id);
 	$array = get_profile_data($conn, $user_id); ?>
+	
+	<div class="profile-img" style="background-image: url('imgs/example-profile/jack.jpeg');"></div>
 	<div class="profile-info">
 	<?php
 		$fName = $array['fName'];
@@ -39,6 +40,9 @@
 		
 		echo "<a href = \"mailto: $user\" style = \"font-size: 20px\">$user</a>";
 		?>
+		<div class = "locationform" style = "width: 500px; flex-direction: row;">
+			<h3>College: Georgia College and State University </h3><button style = "height: 30px;"> Change School </button>
+		</div>
 		<br>
 		<h2>My tags</h2>
 		<?php
@@ -65,8 +69,7 @@
 		
 		require_once("../php/sqlFunctions.php");
 		$conn = connectDB();
-		$email = $_SESSION['email'];
-		$user_id = get_user_id($conn, $email);
+		$user_id = get_user_id($conn, $user);
 		$myarray = getListingViaUserID($conn, $user_id);
 		$array = $myarray[1];
 
@@ -77,8 +80,7 @@
 				echo "<th>Apt No.</th>";
 				echo "<th>City</th>";
 				echo "<th>State</th>";
-				echo "<th>Edit</th>";
-				echo "<th>Delete</th>";
+				echo "<th>View</th>";
 			echo "</tr>";
 			
 		while($row = mysqli_fetch_assoc($array))
@@ -88,14 +90,12 @@
 			$city = $row['city'];
 			$state = $row['state'];
 			$listingID = $row['listing_id'];
-			$editBTN = "<input type = \"button\" onclick = \"parent.location = '../cssnhtml/listing_edit_page.php?listing_id='+$listingID\" value = \"Edit Listing\">";
-            $deleteBTN = "<input type = \"button\" onclick = \"parent.location = '../cssnhtml/deleteListing.php?listing_id='+$listingID\" value = \"Delete Listing\">";
+            $viewBTN = "<input type = \"button\" onclick = \"parent.location = '../cssnhtml/viewListing.php?listing_id='+$listingID\" value = \"View Listing\">";
 			echo "<td>$address</td>";
 			echo "<td>$aptNo</td>";
 			echo "<td>$city</td>";
 			echo "<td>$state</td>";
-			echo "<td>$editBTN</td>";
-			echo "<td>$deleteBTN</td>";
+			echo "<td>$viewBTN</td>";
 			echo "</tr>";
         }
 		echo "</table>";
@@ -104,15 +104,6 @@
 		
 
 	</div>
-
-	<br>
-	<input type = "button" onclick = "parent.location = '../cssnhtml/listing_creation_info_page.php'" value = "Create Listing">
-	<input type = "button" onclick = "parent.location = '../cssnhtml/edit_profile.php?user_id=$user_id'" value = 'Edit Profile'>
-	<br> <br>
-	<input type = "button" onclick = "parent.location = '../cssnhtml/logout.php'" value = 'Log Out'>
-	<input type = "button" onclick = "parent.location = '../cssnhtml/deleteAccount.php'" value = 'Delete my Account'>
-	
-	
 	
 	<p style = "position: absolute; bottom: -200px; padding: 10px; left: 35%; color: #adadad"> RoomMate.inc 2021 copyright trademark yada yada yada yada</p>
 	

@@ -1,3 +1,23 @@
+<?php 
+	require_once("../php/sqlFunctions.php");
+	session_start();
+	$conn = connectDB();
+	if(isset($_COOKIE['email']))
+	{
+		$email = $_COOKIE['email'];
+		$password = $_COOKIE['password'];
+		$remember = 1;
+		$goToHomePage = 1;
+		userLogin($conn, $email, $password, $remember, $goToHomePage);
+	}
+
+	if(isset($_GET['msg']))
+	{
+		echo "<script>alert(\"Login Failed. Try Again\")</script>";
+	}
+
+?>
+
 <html>
 
 <head>
@@ -13,47 +33,56 @@
 
 <body style = "background-color: #fafafa">
 
+
+
 	<?php include 'modules/header/header.php'; ?>
 	<div class="bgbanner" style="background-image: url(imgs/ui/banners/homepage-banner.png);">
 	
 	</div>
 	
 	<div class="searchbarwrap">
-		<h2 class = "subtitle">Start searching for your perfect home now</h2>
+		<h2 class = "subtitle" id = "subtitle">Start searching for your perfect home now</h2>
 		
 		<button id='expandButton' style = "height: 30px;" >More Search Preferences</button>
+        <button id='toggleSearch' style = "height: 30px;" >Search for Users</button>
 		
 		<div id = "homesearchbar" action="../Webpages/ApartmentListings.php" >
-			<input form = "homesearch" type="text" style="float:left; display:inline; width: 90%;" class="searchTerm" placeholder="Milledgeville, Georgia" name="query" />
-			<button form = "homesearch" type="submit" style="float:right; display:inline; position:absolute; width: 10%;" class="searchButton"><i class="fa fa-search"></i></button>
+			<input form = "homesearch" type="text" style="float:left; display:inline; width: 90%;" class="searchTerm" id = "searchBar" name="query" />
+			<button form = "homesearch" type="submit" style="float:right; display:inline; position:absolute; width: 10%;" class="searchButton" id = "searchButton"><i class="fa fa-search"></i></button>
 		</div>
 		
 		<div id="search" style="visibility: hidden; display: inline-block;">
-			<form id = "homesearch" method = "get" action="../Webpages/ApartmentListings.php" >
+			<form id = "homesearch" method = "get" action="Listings.php" >
 
 				<!--<br><p>Bathrooms
 				<input type="number" min="1" max="5" value="1" style="float:left; display:inline; width: 50%" name="bath" />-->
-				<p>Max Price
-				<input type="number" min="0" max="1000000" style="float:left; display:inline; width: 50%; margin-right: 10px;" name="price" />
-				<p> Pets
+
+
+				<p id = "label1" style = "position: absolute; left: 51%; top: -3%;" >Pets</p>
 				
-				<select name="pets" style="float:left; display:inline; width: 50%; margin-right: 10px;" >
+				<select name="field1" style="float:left; display:inline; width: 50%; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" id = "field1" >
 				
 					<option Value = "Don't Care">Don't Care</option>
 					<option value = "Yes">Yes</option>
 					<option value = "No">No</option>
 
 				</select>
-				<p> Smoke
+				<p id = "label2" style = "position: absolute; left: 51%; top: 28%;">Smoke</p>
 				
-				<select name="smoke" style="float:left; display:inline; width: 50%; margin-right: 10px;" >
+				<select name="field2" style="float:left; display:inline; width: 50%; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" id = "field2" >
 				
 					<option Value = "Don't Care">Don't Care</option>
 					<option value = "Yes">Yes</option>
 					<option value = "No">No</option>
 
 				</select>
-			
+
+                <p id = "label3" style = "position: absolute; left: 51%; top: 60%;">Max Price</p>
+                <input type="number" name = "field3" min="0" max="1000000" style="float:left; display:inline; width: 50%; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" name="price" id = "field3"/>
+
+
+                <input type="hidden" name = "type" id = "field4" value = "listings" />
+
 			</form>
 		</div>
 	</div>
@@ -65,43 +94,77 @@
 	</div>
 	
 	
+<?php 
+	$conn = connectDB();
+	$data = getRandomListings($conn);
+	$listing0 = $data[0];
+	$listing1 = $data[1];
+	$listing2 = $data[2];
+	$listing3 = $data[3];
+
+?>
+
 <div class="card">
   <img src="imgs/example-real-estate/bellamy.png" alt="Avatar" style="width:300px; height: 300px;">
   <div class="container">
-    <h4><b>The Bellamy</b></h4>
-    <p>145 S Irwin St</p>
-	<p>Milledgeville, Georgia, 31061</p>
-	<p>$399 - $650
+  <?php
+	$address = $listing0['address'];
+    $apt = $listing0['apt_no'];
+    echo "<p>$address $apt</p>";
+	$city = $listing0['city'];
+	$state = $listing0['state'];
+	echo "<p>$city, $state</p>";
+	$price = $listing0['price'];
+	echo "<p>$$price/month</p>";
+	?>
   </div>
 </div>
 
 <div class="card-2">
   <img src="imgs/example-real-estate/revelry.png" alt="Avatar" style="width:300px; height: 300px;">
   <div class="container">
-    <h4><b>Revelry Flats</b></h4>
-    <p>500 W Franklin St</p>
-	<p>Milledgeville, Georgia, 31061</p>
-	<p>$500 - $700
+  <?php
+	$address = $listing1['address'];
+    $apt = $listing1['apt_no'];
+    echo "<p>$address $apt</p>";
+	$city = $listing1['city'];
+	$state = $listing1['state'];
+	echo "<p>$city, $state</p>";
+	$price = $listing1['price'];
+	echo "<p>$$price/month</p>";
+	?>
   </div>
 </div>
 
 <div class="card-3">
   <img src="imgs/example-real-estate/popeyes.png" alt="Avatar" style="width:300px; height: 300px;">
   <div class="container">
-    <h4><b>Popeyes</b></h4>
-    <p>145 Chicken St</p>
-	<p>Milledgeville, Georgia, 31061</p>
-	<p>$6969
+  <?php
+	$address = $listing2['address'];
+    $apt = $listing2['apt_no'];
+    echo "<p>$address $apt</p>";
+	$city = $listing2['city'];
+	$state = $listing2['state'];
+	echo "<p>$city, $state</p>";
+	$price = $listing2['price'];
+	echo "<p>$$price/month</p>";
+	?>
   </div>
 </div>
 
 <div class="card-4">
   <img src="imgs/example-real-estate/coollane.png" alt="Avatar" style="width:300px; height: 300px;">
   <div class="container">
-    <h4><b>2 Roommates Wanted</b></h4>
-    <p>164 S Irwin St</p>
-	<p>Milledgeville, Georgia, 31061</p>
-	<p>$400/person
+  <?php
+	$address = $listing3['address'];
+	$apt = $listing3['apt_no'];
+    echo "<p>$address $apt</p>";
+	$city = $listing3['city'];
+	$state = $listing3['state'];
+	echo "<p>$city, $state</p>";
+	$price = $listing3['price'];
+	echo "<p>$$price/month</p>";
+	?>
   </div>
 </div>
 	
