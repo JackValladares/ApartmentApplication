@@ -27,13 +27,16 @@
 	<?php include 'modules/header/header.php'; ?>
 	<div class="profile-img" style="background-image: url('../cssnhtml/get_profile_pic.php');"></div>
     <?php
+
 	require_once("../php/sqlFunctions.php");
+
 	$user = $_SESSION['email'];
 	$conn = connectDB();
 	$user_id = get_user_id($conn, $user);
-	$array = get_profile_data($conn, $user_id); ?>
+	$array = get_profile_data($conn, $user_id);
+	?>
 	<div class="profile-info">
-	<?php
+    <?php
 		$fName = $array['fName'];
 		$lName = $array['lName'];
 		echo "<h1>$fName $lName</h1>";
